@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apollo Cinéma — Cinémathèque Privée & Formations d'Élite</title>
+<meta name="description" content="Une cinémathèque privée. Films d'auteurs rares, séries vintage, documentaires, formations d'élite. Sur invitation.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #131320;
+  --gold: #c9a96e;
+  --gold-bright: #e8c886;
+  --text: #e8e6e3;
+  --text-dim: #8a8a9a;
+  --accent: #c9a96e;
+  --border: rgba(201, 169, 110, 0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, #0a0a0f 0%, #131320 100%);
+  padding: 2rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(201, 169, 110, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #e8c886 0%, #c9a96e 50%, #8a7a4e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-dim);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #c9a96e 0%, #8a7a4e 100%);
+  color: #0a0a0f;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.25);
+}
+
+.section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  color: var(--gold-bright);
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background: linear-gradient(135deg, #1a1a2e 0%, #131320 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  text-align: center;
+  padding: 1rem;
+}
+
+.card-info {
+  padding: 0.75rem 1rem;
+}
+
+.card-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.card-meta {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.email-section {
+  background: linear-gradient(180deg, #0a0a0f 0%, #131320 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.email-form {
+  max-width: 500px;
+  margin: 2rem auto 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.email-input {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.9rem 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.email-btn {
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, #c9a96e 0%, #8a7a4e 100%);
+  color: #0a0a0f;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.email-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 20px rgba(201, 169, 110, 0.3);
+}
+
+.email-success {
+  display: none;
+  margin-top: 1rem;
+  color: var(--gold-bright);
+  font-size: 0.9rem;
+}
+
+.email-success.show {
+  display: block;
+}
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.training-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.training-tag {
+  padding: 0.4rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 600px) {
+  .hero-stats { gap: 1rem; }
+  .stat-num { font-size: 1.5rem; }
+  .section { padding: 3rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Cinémathèque Privée — Sur Invitation</div>
+  <h1>Apollo Cinéma</h1>
+  <p>Films d'auteurs rares, séries vintage cultes, documentaires d'exploration, et formations d'élite. Streaming en qualité HD, accessible partout.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">17</div>
+      <div class="stat-label">Films</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Séries</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">135</div>
+      <div class="stat-label">Documentaires</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1,870</div>
+      <div class="stat-label">Formations</div>
+    </div>
+  </div>
+  <a href="#access" class="cta-btn">Demander un accès</a>
+</section>
+
+<!-- FILMS -->
+<section class="section" id="films">
+  <h2 class="section-title">Films</h2>
+  <p class="section-subtitle">Collection Romero · Russ Meyer · Sautet · Hollywood rare</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-poster">Night of the Living Dead</div>
+      <div class="card-info">
+        <div class="card-title">Night of the Living Dead</div>
+        <div class="card-meta">1968 · Romero · HD Remastered</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Dawn of the Dead</div>
+      <div class="card-info">
+        <div class="card-title">Dawn of the Dead</div>
+        <div class="card-meta">1978 · Romero</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Day of the Dead</div>
+      <div class="card-info">
+        <div class="card-title">Day of the Dead</div>
+        <div class="card-meta">1985 · Romero</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">The Crazies</div>
+      <div class="card-info">
+        <div class="card-title">The Crazies</div>
+        <div class="card-meta">1973 · Romero</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Two Evil Eyes</div>
+      <div class="card-info">
+        <div class="card-title">Two Evil Eyes</div>
+        <div class="card-meta">1990 · Romero/Argento</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Season of the Witch</div>
+      <div class="card-info">
+        <div class="card-title">Season of the Witch</div>
+        <div class="card-meta">1972 · Romero</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Beyond the Valley of the Dolls</div>
+      <div class="card-info">
+        <div class="card-title">Beyond the Valley of the Dolls</div>
+        <div class="card-meta">1970 · Russ Meyer</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Un mauvais fils</div>
+      <div class="card-info">
+        <div class="card-title">Un mauvais fils</div>
+        <div class="card-meta">1980 · Claude Sautet</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">John Wick Chapter 4</div>
+      <div class="card-info">
+        <div class="card-title">John Wick Chapter 4</div>
+        <div class="card-meta">2023 · 1080p</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">F9: The Fast Saga</div>
+      <div class="card-info">
+        <div class="card-title">F9</div>
+        <div class="card-meta">2021 · 4K</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERIES -->
+<section class="section" style="background: #0c0c14;">
+  <h2 class="section-title">Séries Vintage</h2>
+  <p class="section-subtitle">Cultes & rares — de Miami à Twin Peaks</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-poster">Twin Peaks</div>
+      <div class="card-info">
+        <div class="card-title">Twin Peaks</div>
+        <div class="card-meta">Saison 1 · Complete</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Miami Vice</div>
+      <div class="card-info">
+        <div class="card-title">Miami Vice</div>
+        <div class="card-meta">1984 · Complete</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Magnum P.I.</div>
+      <div class="card-info">
+        <div class="card-title">Magnum P.I.</div>
+        <div class="card-meta">Season 1</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">The X-Files</div>
+      <div class="card-info">
+        <div class="card-title">The X-Files</div>
+        <div class="card-meta">S02 & S03 · 1080p BluRay</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Starsky & Hutch</div>
+      <div class="card-info">
+        <div class="card-title">Starsky & Hutch</div>
+        <div class="card-meta">Season 1 · Complete</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTAIRES -->
+<section class="section">
+  <h2 class="section-title">Documentaires</h2>
+  <p class="section-subtitle">135 titres — Cousteau, IA, sciences</p>
+  <div class="grid">
+    <div class="card">
+      <div class="card-poster">The Undersea World of Jacques Cousteau</div>
+      <div class="card-info">
+        <div class="card-title">Cousteau — Undersea World</div>
+        <div class="card-meta">1971-75 · Complete Series</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">Jacques Cousteau Odyssey</div>
+      <div class="card-info">
+        <div class="card-title">Cousteau Odyssey</div>
+        <div class="card-meta">6 disques · Complete</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-poster">AI Reinforcement Learning</div>
+      <div class="card-info">
+        <div class="card-title">AI: Reinforcement Learning</div>
+        <div class="card-meta">Python · Full Course</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATIONS -->
+<section class="section" style="background: #0c0c14;">
+  <h2 class="section-title">Formations d'Élite</h2>
+  <p class="section-subtitle">1,870 vidéos — Marketing, cinéma, développement perso</p>
+  <div class="training-categories">
+    <span class="training-tag">Full Time Filmmaker (Parker Walbeck)</span>
+    <span class="training-tag">Tugan — Vente émotionnelle</span>
+    <span class="training-tag">Marketing Mania (Stan Lelou)</span>
+    <span class="training-tag">Bob Proctor — Thinking Into Results</span>
+    <span class="training-tag">Tai Lopez — Digital Social Marketing</span>
+    <span class="training-tag">Dan Kennedy — Copywriting</span>
+    <span class="training-tag">Andrew Tate — Iron Mind / Hustler University</span>
+    <span class="training-tag">Freelance & Agence Pro (Oussama)</span>
+    <span class="training-tag">Startup Pro (Yomi Denzel)</span>
+    <span class="training-tag">RSD — Social Dynamics</span>
+    <span class="training-tag">Neil Strauss — Stylelife</span>
+    <span class="training-tag">Kezia Noble</span>
+    <span class="training-tag">Christian Mickelsen — Client Attraction</span>
+    <span class="training-tag">John Carlton — Simple Writing System</span>
+    <span class="training-tag">Hemi-Sync — Gateway Experience</span>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="email-section" id="access">
+  <h2 class="section-title">Demander un accès</h2>
+  <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 1rem;">
+    Apollo Cinéma est une cinémathèque privée. Laisse ton email pour recevoir une invitation.
+  </p>
+  <form class="email-form" onsubmit="captureEmail(event)">
+    <input type="email" class="email-input" placeholder="votre@email.com" required id="email-input">
+    <button type="submit" class="email-btn">Rejoindre</button>
+  </form>
+  <div class="email-success" id="email-success">
+    ✦ Merci ! Vous recevrez votre invitation par email.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Apollo Cinéma — Cinémathèque privée sur invitation · <a href="https://jellyfin.org">Propulsé par Jellyfin</a></p>
+  <p style="margin-top: 0.5rem; opacity: 0.5;">Streaming HD · Accessible partout · Sur Raspberry Pi 4</p>
+</footer>
+
+<script>
+function captureEmail(e) {
+  e.preventDefault();
+  const email = document.getElementById('email-input').value;
+  // Store locally (no backend on GitHub Pages)
+  const emails = JSON.parse(localStorage.getItem('apollo_emails') || '[]');
+  emails.push({ email: email, date: new Date().toISOString() });
+  localStorage.setItem('apollo_emails', JSON.stringify(emails));
+  document.getElementById('email-success').classList.add('show');
+  document.getElementById('email-input').value = '';
+}
+</script>
+
+</body>
+</html>
