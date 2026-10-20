@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#000;--panel:#18171c;--panel2:#1d1b21;--line:#2a272e;
-  --txt:#f6f3f8;--mut:#a39da8;--dim:#68636d;
+  --txt:#f6f3f8;--mut:#b3adb8;--dim:#7d7784;
   --vio:#a247f4;--vio2:#873ae7;--vio-soft:#d8b8ff;
   --ok:#4ade80;--warn:#fbbf24;--pink:#f472b6;--cyan:#22d3ee;
   --r:14px;
@@ -50,7 +50,7 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--vio-soft),var(--v
 .tbar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
 .dot{width:11px;height:11px;border-radius:50%}
 .tbar .t{margin-left:10px;color:var(--dim);font-size:12px;font-family:ui-monospace,monospace}
-.term pre{padding:22px 24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75;overflow-x:auto;color:#d6d0db}
+.term pre{padding:22px 24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;line-height:1.85;overflow-x:auto;color:#e9e4ee}
 .q{color:var(--cyan)}
 .a{color:var(--txt)}
 .src{color:var(--dim);font-size:11.5px}
@@ -177,11 +177,11 @@ RDC — 61 €/mois <span class="tag tag-g">à jour</span><br>
   <span class="kicker">FAQ</span>
   <h2 style="text-align:center">Questions fréquentes</h2>
   <div style="margin-top:36px" id="faqs">
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Qui peut utiliser l'assistant ?</b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Les copropriétaires de la copropriété, chacun avec ses identifiants personnels. L'accès est attribué sur invitation.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>L'assistant peut-il se tromper ?</b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Il ne peut répondre qu'à partir de ses documents, et il cite toujours sa source — vous pouvez vérifier. Si deux documents se contredisent, il le signale. Pour les questions juridiques à conséquences, il vous renverra vers le notaire ou le syndic.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Mes questions sont-elles visibles des autres copropriétaires ?</b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non. Chaque conversation est privée. Seule la base documentaire est commune.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Quels documents sont inclus ?</b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">PV d'assemblées générales, acte de base et règlement de copropriété, contrats d'assurance, devis et factures de travaux, contrats fournisseurs, liste des contacts officiels. Les relevés bancaires peuvent être tenus hors de la base si la copropriété le souhaite.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Ça remplace le syndic ?</b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non — et c'est voulu. C'est un archiviste intelligent qui vous fait gagner du temps. Les décisions, les signatures et les obligations légales restent humaines.</div></div>
+    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Qui peut utiliser l'assistant ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Les copropriétaires de la copropriété, chacun avec ses identifiants personnels. L'accès est attribué sur invitation.</div></div>
+    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>L'assistant peut-il se tromper ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Il ne peut répondre qu'à partir de ses documents, et il cite toujours sa source — vous pouvez vérifier. Si deux documents se contredisent, il le signale. Pour les questions juridiques à conséquences, il vous renverra vers le notaire ou le syndic.</div></div>
+    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Mes questions sont-elles visibles des autres copropriétaires ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non. Chaque conversation est privée. Seule la base documentaire est commune.</div></div>
+    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Quels documents sont inclus ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">PV d'assemblées générales, acte de base et règlement de copropriété, contrats d'assurance, devis et factures de travaux, contrats fournisseurs, liste des contacts officiels. Les relevés bancaires peuvent être tenus hors de la base si la copropriété le souhaite.</div></div>
+    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Ça remplace le syndic ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non — et c'est voulu. C'est un archiviste intelligent qui vous fait gagner du temps. Les décisions, les signatures et les obligations légales restent humaines.</div></div>
   </div>
 </div></section>
 
