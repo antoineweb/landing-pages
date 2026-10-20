@@ -1,15 +1,15 @@
 <!doctype html>
 <!--
-  ACOISSER — L'assistant IA des copropriétés établies.
-  Landing publique. Aucune adresse, aucun nom de rue, aucune donnée copro.
-  CTA → accès privé (login séparé, sur un autre domaine).
+  ACOISSER — The AI assistant for established condominiums.
+  Public landing. No address, no street names, no personal data.
+  EN by default + FR via one-click toggle. CTA → private access (separate domain).
 -->
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ACOISSER — L'assistant IA de votre copropriété</title>
-<meta name="description" content="Toutes les réponses de votre copropriété, en une question. PV d'AG, budgets, travaux, assurances — l'assistant qui lit tout pour vous.">
+<title>ACOISSER — The AI assistant for your building</title>
+<meta name="description" content="Every answer about your condominium, in one question. General meeting minutes, budget, works, insurance — the assistant that has read everything, and cites its sources.">
 <style>
 :root{
   --bg:#000;--panel:#18171c;--panel2:#1d1b21;--line:#2a272e;
@@ -24,12 +24,15 @@ body{background:var(--bg);color:var(--txt);font-family:Inter,-apple-system,'SF P
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 /* nav */
-nav{position:fixed;top:0;width:100%;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(14px);border-bottom:1px solid transparent}
+nav{position:fixed;top:0;width:100%;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:blur(14px)}
 nav .row{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{display:flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.02em;font-size:15px}
 .logo .mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--vio),var(--vio2));display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800}
 nav .links{display:flex;gap:26px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
 nav .links a:hover{color:var(--txt)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:11px;font-weight:600}
+.lang button{background:transparent;border:0;color:var(--mut);padding:6px 11px;cursor:pointer}
+.lang button.on{background:var(--vio);color:#fff}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600;transition:.18s}
 .btn-p{background:linear-gradient(135deg,#a947f2,#873ae7);color:#fff}
 .btn-p:hover{filter:brightness(1.12)}
@@ -50,12 +53,10 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--vio-soft),var(--v
 .tbar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--panel)}
 .dot{width:11px;height:11px;border-radius:50%}
 .tbar .t{margin-left:10px;color:var(--dim);font-size:12px;font-family:ui-monospace,monospace}
-.term pre{padding:22px 24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;line-height:1.85;overflow-x:auto;color:#e9e4ee}
+.term pre{padding:22px 26px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;line-height:1.85;overflow-x:auto;color:#e9e4ee}
 .q{color:var(--cyan)}
 .a{color:var(--txt)}
 .src{color:var(--dim);font-size:11.5px}
-.p{color:var(--pink)}
-.g{color:var(--ok)}
 .caret{display:inline-block;width:8px;height:15px;background:var(--vio);vertical-align:-2px;animation:blink 1.1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 /* sections */
@@ -71,10 +72,10 @@ h2{font-size:clamp(26px,3.6vw,38px);font-weight:650;letter-spacing:-.015em;line-
 .card p{color:var(--mut);font-size:13.5px;line-height:1.6}
 /* split features */
 .feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:64px}
-.feat:nth-child(even) .ftxt{order:2}
+.feat:nth-of-type(even) .ftxt{order:2}
 .ftxt h3{font-size:21px;font-weight:640;margin-bottom:12px}
 .ftxt p{color:var(--mut);font-size:14px;line-height:1.7}
-.fdemo{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:22px;font-size:12.5px;color:var(--mut);font-family:ui-monospace,monospace;line-height:1.8}
+.fdemo{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r);padding:22px;font-size:13px;color:var(--mut);font-family:ui-monospace,monospace;line-height:1.85}
 .fdemo b{color:var(--txt);font-weight:600}
 .tag{display:inline-block;padding:2px 9px;border-radius:6px;font-size:11px;font-weight:600;margin-right:6px}
 .tag-v{background:rgba(162,71,244,.16);color:var(--vio-soft)}
@@ -83,120 +84,146 @@ h2{font-size:clamp(26px,3.6vw,38px);font-weight:650;letter-spacing:-.015em;line-
 .bigcta{background:linear-gradient(135deg,#873ae7,#a247f4);border-radius:22px;padding:70px 40px;text-align:center;position:relative;overflow:hidden}
 .bigcta h2{color:#fff}
 .bigcta p{color:rgba(255,255,255,.82);max-width:560px;margin:10px auto 30px}
-.pill{display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);padding:12px 22px;border-radius:12px;font-family:ui-monospace,monospace;font-size:13px;color:#fff}
 footer{border-top:1px solid var(--line);margin-top:90px;padding:44px 0 60px;color:var(--dim);font-size:12px}
 footer .cols{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-@media(max-width:820px){.feat{grid-template-columns:1fr}.feat:nth-child(even) .ftxt{order:0}nav .links{display:none}}
+@media(max-width:820px){.feat{grid-template-columns:1fr}.feat:nth-of-type(even) .ftxt{order:0}nav .links{display:none}}
 </style>
 </head>
 <body>
+<!-- i18n: every translatable string has data-en / data-fr; JS toggles. -->
 <nav><div class="wrap row">
   <div class="logo"><div class="mark">A</div>ACOISSER</div>
-  <div class="links"><a href="#how">Fonctionnement</a><a href="#trust">Confidentialité</a><a href="#faq">FAQ</a></div>
-  <a class="btn btn-p" href="#access">Accès membres</a>
+  <div class="links">
+    <a href="#how" data-en="How it works" data-fr="Fonctionnement">How it works</a>
+    <a href="#trust" data-en="Privacy" data-fr="Confidentialité">Privacy</a>
+    <a href="#faq" data-en="FAQ" data-fr="FAQ">FAQ</a>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="lang"><button id="btn-en" class="on" onclick="setLang('en')">EN</button><button id="btn-fr" onclick="setLang('fr')">FR</button></div>
+    <a class="btn btn-p" href="#access" data-en="Member access" data-fr="Accès membres">Member access</a>
+  </div>
 </div></nav>
 
 <header><div class="wrap" style="text-align:center">
   <div class="halo"></div>
-  <span class="eyebrow">Assistant IA · Copropriété</span>
-  <h1>Toutes les réponses de votre <em>copropriété</em>, en une question.</h1>
-  <p class="sub" style="margin:0 auto">PV d'assemblée, budget, travaux, assurances, décisions passées.
-  L'assistant qui a tout lu — et qui cite ses sources à chaque réponse.</p>
+  <span class="eyebrow" data-en="AI Assistant · Condominium" data-fr="Assistant IA · Copropriété">AI Assistant · Condominium</span>
+  <h1 data-en="Every answer about your <em>condominium</em>, in one question." data-fr="Toutes les réponses de votre <em>copropriété</em>, en une question.">Every answer about your <em>condominium</em>, in one question.</h1>
+  <p class="sub" style="margin:0 auto" data-en="General meeting minutes, budget, works, insurance, past decisions. The assistant that has read everything — and cites its source in every answer." data-fr="PV d'assemblée, budget, travaux, assurances, décisions passées. L'assistant qui a tout lu — et qui cite ses sources à chaque réponse.">General meeting minutes, budget, works, insurance, past decisions. The assistant that has read everything — and cites its source in every answer.</p>
   <div class="cta-row" style="justify-content:center">
-    <a class="btn btn-p btn-big" href="#access">Accéder à l'assistant</a>
-    <a class="btn btn-o btn-big" href="#how">Voir comment ça marche</a>
+    <a class="btn btn-p btn-big" href="#access" data-en="Open the assistant" data-fr="Accéder à l'assistant">Open the assistant</a>
+    <a class="btn btn-o btn-big" href="#how" data-en="See how it works" data-fr="Voir comment ça marche">See how it works</a>
   </div>
   <div class="term">
-    <div class="tbar"><span class="dot" style="background:#fb7185"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#4ade80"></span><span class="t">acoisser — assistant copropriété</span></div>
-<pre><span class="q">❯ Quand le dernier ravalement a-t-il été voté, et pour quel montant ?</span>
-<span class="a">Ravalement voté à l'AG de décembre 2024 : devis accepté à 18 400 €,
-réparti selon les quotes-parts (1 000/10 000). Les travaux ont démarré
-en mars 2025 et ont été réceptionnés sans réserve en juin 2025.</span>
-<span class="src">— Source : PV d'AG, 18 décembre 2024, point 7</span>
-<span class="q">❯ Et les assurances, c'est couvert pour quoi ?</span>
-<span class="a">Le bâtiment est couvert par une police incendie et RC copropriété.
-Dernier renouvellement : février. La franchise est de 2 500 € pour
-les dégâts d'eau.</span>
-<span class="src">— Source : police d'assurance, page 3, conditions particulières</span>
+    <div class="tbar"><span class="dot" style="background:#fb7185"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#4ade80"></span><span class="t">acoisser — condominium assistant</span></div>
+<pre><span class="q" data-en="❯ When was the facade renovation voted, and for how much?" data-fr="❯ Quand le dernier ravalement a-t-il été voté, et pour quel montant ?">❯ When was the facade renovation voted, and for how much?</span>
+<span class="a" data-en="Renovation approved at the December 2024 general meeting: accepted quote of €18,400, split by ownership shares (1,000/10,000). Work started in March 2025 and was signed off without reservations in June 2025." data-fr="Ravalement voté à l'AG de décembre 2024 : devis accepté à 18 400 €, réparti selon les quotes-parts (1 000/10 000). Les travaux ont démarré en mars 2025 et ont été réceptionnés sans réserve en juin 2025.">Renovation approved at the December 2024 general meeting: accepted quote of €18,400, split by ownership shares (1,000/10,000). Work started in March 2025 and was signed off without reservations in June 2025.</span>
+<span class="src" data-en="— Source: general meeting minutes, December 18, 2024, item 7" data-fr="— Source : PV d'AG, 18 décembre 2024, point 7">— Source: general meeting minutes, December 18, 2024, item 7</span>
+<span class="q" data-en="❯ And what does the insurance actually cover?" data-fr="❯ Et les assurances, c'est couvert pour quoi ?">❯ And what does the insurance actually cover?</span>
+<span class="a" data-en="The building is covered by a fire and condominium liability policy. Last renewal: February. The deductible is €2,500 for water damage." data-fr="Le bâtiment est couvert par une police incendie et RC copropriété. Dernier renouvellement : février. La franchise est de 2 500 € pour les dégâts d'eau.">The building is covered by a fire and condominium liability policy. Last renewal: February. The deductible is €2,500 for water damage.</span>
+<span class="src" data-en="— Source: insurance policy, page 3, special conditions" data-fr="— Source : police d'assurance, page 3, conditions particulières">— Source: insurance policy, page 3, special conditions</span>
 <span class="q">❯ </span><span class="caret"></span></pre>
   </div>
-  <p class="note" style="margin-top:18px">Démo illustrative. L'assistant répond uniquement à partir des documents réels de votre copropriété.</p>
+  <p class="note" style="margin-top:18px" data-en="Illustrative demo. The assistant only answers from your condominium's real documents." data-fr="Démo illustrative. L'assistant répond uniquement à partir des documents réels de votre copropriété.">Illustrative demo. The assistant only answers from your condominium's real documents.</p>
 </div></header>
 
 <section id="how"><div class="wrap">
-  <span class="kicker">Fonctionnement</span>
-  <h2>Un archiviste numérique, disponible 24/7.</h2>
-  <p class="lead">Chaque document officiel de la copropriété — PV, budget, contrats, devis, assurance — est intégré dans la base de connaissance de l'assistant. Il ne devine jamais : il retrouve et cite.</p>
+  <span class="kicker" data-en="How it works" data-fr="Fonctionnement">How it works</span>
+  <h2 data-en="A digital archivist, available 24/7." data-fr="Un archiviste numérique, disponible 24/7.">A digital archivist, available 24/7.</h2>
+  <p class="lead" data-en="Every official document of the condominium — minutes, budget, contracts, quotes, insurance — is fed into the assistant's knowledge base. It never guesses: it retrieves, and cites." data-fr="Chaque document officiel de la copropriété — PV, budget, contrats, devis, assurance — est intégré dans la base de connaissance de l'assistant. Il ne devine jamais : il retrouve et cite.">Every official document of the condominium — minutes, budget, contracts, quotes, insurance — is fed into the assistant's knowledge base. It never guesses: it retrieves, and cites.</p>
   <div class="cards3">
-    <div class="card"><div class="ic">🗂️</div><h3>Tout est lu, rien n'est inventé</h3><p>Chaque réponse cite son document et sa date. Si l'information n'existe pas dans les archives, l'assistant le dit — et vous oriente vers la bonne personne.</p></div>
-    <div class="card"><div class="ic">🔒</div><h3>Vos documents restent privés</h3><p>La base documentaire est hébergée sur votre propre infrastructure. Aucun document n'est envoyé à un service tiers, aucun partage public, aucun entraînement sur vos données.</p></div>
-    <div class="card"><div class="ic">🧾</div><h3>Traçabilité complète</h3><p>Les conflits entre documents sont détectés : la version la plus récente l'emporte, et l'assistant vous signale la divergence au lieu de la masquer.</p></div>
+    <div class="card"><div class="ic">🗂️</div><h3 data-en="Everything read, nothing invented" data-fr="Tout est lu, rien n'est inventé">Everything read, nothing invented</h3><p data-en="Every answer cites its document and date. If the information isn't in the archives, the assistant says so — and points you to the right person." data-fr="Chaque réponse cite son document et sa date. Si l'information n'existe pas dans les archives, l'assistant le dit — et vous oriente vers la bonne personne.">Every answer cites its document and date. If the information isn't in the archives, the assistant says so — and points you to the right person.</p></div>
+    <div class="card"><div class="ic">🔒</div><h3 data-en="Your documents stay private" data-fr="Vos documents restent privés">Your documents stay private</h3><p data-en="The document base is hosted on your own infrastructure. Nothing is sent to third-party services, nothing is shared publicly, no training on your data." data-fr="La base documentaire est hébergée sur votre propre infrastructure. Aucun document n'est envoyé à un service tiers, aucun partage public, aucun entraînement sur vos données.">The document base is hosted on your own infrastructure. Nothing is sent to third-party services, nothing is shared publicly, no training on your data.</p></div>
+    <div class="card"><div class="ic">🧾</div><h3 data-en="Full traceability" data-fr="Traçabilité complète">Full traceability</h3><p data-en="Conflicts between documents are detected: the most recent version wins, and the assistant flags the discrepancy instead of hiding it." data-fr="Les conflits entre documents sont détectés : la version la plus récente l'emporte, et l'assistant vous signale la divergence au lieu de la masquer.">Conflicts between documents are detected: the most recent version wins, and the assistant flags the discrepancy instead of hiding it.</p></div>
   </div>
 
   <div class="feat">
     <div class="ftxt">
-      <h3>Il connaît chaque décision de vos AG</h3>
-      <p>Qui a voté quoi, quand, et pourquoi. Les actions ouvertes, leurs responsables, leurs échéances. Plus besoin de relire dix PV pour retrouver un détail.</p>
+      <h3 data-en="It knows every decision from your general meetings" data-fr="Il connaît chaque décision de vos AG">It knows every decision from your general meetings</h3>
+      <p data-en="Who voted what, when, and why. Open actions, their owners, their deadlines. No more re-reading ten sets of minutes to find one detail." data-fr="Qui a voté quoi, quand, et pourquoi. Les actions ouvertes, leurs responsables, leurs échéances. Plus besoin de relire dix PV pour retrouver un détail.">Who voted what, when, and why. Open actions, their owners, their deadlines. No more re-reading ten sets of minutes to find one detail.</p>
     </div>
     <div class="fdemo">
-<b>Actions ouvertes</b><br>
-<span class="tag tag-v">AG déc. 2025</span> Choix du nouveau syndic — <i>à l'ordre du jour déc. 2026</i><br>
-<span class="tag tag-v">AG déc. 2025</span> Virement permanent à mettre en place — <i>lot 2e étage</i><br>
-<span class="tag tag-g">OK</span> Ravalement réceptionné sans réserve — juin 2025
+<b data-en="Open actions" data-fr="Actions ouvertes">Open actions</b><br>
+<span class="tag tag-v">AG déc. 2025</span> <span data-en="Choosing the new managing agent — <i>on the Dec. 2026 agenda</i>" data-fr="Choix du nouveau syndic — <i>à l'ordre du jour déc. 2026</i>">Choosing the new managing agent — <i>on the Dec. 2026 agenda</i></span><br>
+<span class="tag tag-v">AG déc. 2025</span> <span data-en="Standing order to set up — <i>2nd-floor unit</i>" data-fr="Virement permanent à mettre en place — <i>lot 2e étage</i>">Standing order to set up — <i>2nd-floor unit</i></span><br>
+<span class="tag tag-g">OK</span> <span data-en="Facade renovation signed off without reservations — June 2025" data-fr="Ravalement réceptionné sans réserve — juin 2025">Facade renovation signed off without reservations — June 2025</span>
     </div>
   </div>
 
   <div class="feat">
     <div class="ftxt">
-      <h3>Le budget, sans tableur</h3>
-      <p>Contributions par lot, charges courantes, provision de réserve, historique des appels de fonds. Posez la question en français, en néerlandais ou en anglais — l'assistant répond dans votre langue.</p>
+      <h3 data-en="The budget, without spreadsheets" data-fr="Le budget, sans tableur">The budget, without spreadsheets</h3>
+      <p data-en="Contributions per unit, running charges, reserve fund, history of calls for funds. Ask in French, Dutch or English — the assistant answers in your language." data-fr="Contributions par lot, charges courantes, provision de réserve, historique des appels de fonds. Posez la question en français, en néerlandais ou en anglais — l'assistant répond dans votre langue.">Contributions per unit, running charges, reserve fund, history of calls for funds. Ask in French, Dutch or English — the assistant answers in your language.</p>
     </div>
     <div class="fdemo">
-<b>Contributions mensuelles</b><br>
-RDC — 61 €/mois <span class="tag tag-g">à jour</span><br>
-1er étage — 48 €/mois <span class="tag tag-g">à jour</span><br>
-2e étage — 39 €/mois <span class="tag tag-v">virement à activer</span><br>
-3e étage — 52 €/mois <span class="tag tag-g">à jour</span><br>
-<span class="src" style="display:block;margin-top:8px">Répartition selon quotes-parts — source : PV AG, point 8</span>
+<b data-en="Monthly contributions" data-fr="Contributions mensuelles">Monthly contributions</b><br>
+<span data-en="Ground floor — €61/mo" data-fr="RDC — 61 €/mois">Ground floor — €61/mo</span> <span class="tag tag-g" data-en="up to date" data-fr="à jour">up to date</span><br>
+<span data-en="1st floor — €48/mo" data-fr="1er étage — 48 €/mois">1st floor — €48/mo</span> <span class="tag tag-g" data-en="up to date" data-fr="à jour">up to date</span><br>
+<span data-en="2nd floor — €39/mo" data-fr="2e étage — 39 €/mois">2nd floor — €39/mo</span> <span class="tag tag-v" data-en="standing order pending" data-fr="virement à activer">standing order pending</span><br>
+<span data-en="3rd floor — €52/mo" data-fr="3e étage — 52 €/mois">3rd floor — €52/mo</span> <span class="tag tag-g" data-en="up to date" data-fr="à jour">up to date</span><br>
+<span class="src" style="display:block;margin-top:8px" data-en="Split by ownership shares — source: AG minutes, item 8" data-fr="Répartition selon quotes-parts — source : PV AG, point 8">Split by ownership shares — source: AG minutes, item 8</span>
     </div>
   </div>
 </div></section>
 
 <section id="trust"><div class="wrap">
-  <span class="kicker">Confidentialité</span>
-  <h2>Pensé pour une copropriété, pas pour la Silicon Valley.</h2>
-  <p class="lead">Vos PV contiennent des noms, des montants, des décisions sensibles. ACOISSER a été conçu avec l'hypothèse inverse de la plupart des outils IA : rien ne devrait sortir de chez vous.</p>
+  <span class="kicker" data-en="Privacy" data-fr="Confidentialité">Privacy</span>
+  <h2 data-en="Designed for a condominium, not for Silicon Valley." data-fr="Pensé pour une copropriété, pas pour la Silicon Valley.">Designed for a condominium, not for Silicon Valley.</h2>
+  <p class="lead" data-en="Your minutes contain names, amounts, sensitive decisions. ACOISSER was built on the opposite assumption from most AI tools: nothing should ever leave your building." data-fr="Vos PV contiennent des noms, des montants, des décisions sensibles. ACOISSER a été conçu avec l'hypothèse inverse de la plupart des outils IA : rien ne devrait sortir de chez vous.">Your minutes contain names, amounts, sensitive decisions. ACOISSER was built on the opposite assumption from most AI tools: nothing should ever leave your building.</p>
   <div class="cards3">
-    <div class="card"><div class="ic">🏠</div><h3>Hébergement souverain</h3><p>Le service tourne sur l'infrastructure privée de la copropriété. Pas de compte à créer chez un géant du cloud, pas de données hors d'Europe.</p></div>
-    <div class="card"><div class="ic">👥</div><h3>Un accès par copropriétaire</h3><p>Chaque copropriétaire reçoit ses identifiants personnels. Les conversations sont privées : vos questions ne sont visibles par personne d'autre.</p></div>
-    <div class="card"><div class="ic">🚫</div><h3>Zéro entraînement</h3><p>Les documents ne servent qu'à répondre à vos questions. Aucun modèle n'est entraîné sur vos données, aucune revente, aucun profilage.</p></div>
+    <div class="card"><div class="ic">🏠</div><h3 data-en="Sovereign hosting" data-fr="Hébergement souverain">Sovereign hosting</h3><p data-en="The service runs on the condominium's private infrastructure. No account with a cloud giant, no data leaving Europe." data-fr="Le service tourne sur l'infrastructure privée de la copropriété. Pas de compte à créer chez un géant du cloud, pas de données hors d'Europe.">The service runs on the condominium's private infrastructure. No account with a cloud giant, no data leaving Europe.</p></div>
+    <div class="card"><div class="ic">👥</div><h3 data-en="One login per co-owner" data-fr="Un accès par copropriétaire">One login per co-owner</h3><p data-en="Each co-owner gets personal credentials. Conversations are private: your questions are visible to no one else." data-fr="Chaque copropriétaire reçoit ses identifiants personnels. Les conversations sont privées : vos questions ne sont visibles par personne d'autre.">Each co-owner gets personal credentials. Conversations are private: your questions are visible to no one else.</p></div>
+    <div class="card"><div class="ic">🚫</div><h3 data-en="Zero training" data-fr="Zéro entraînement">Zero training</h3><p data-en="Documents are used only to answer your questions. No model is trained on your data, no resale, no profiling." data-fr="Les documents ne servent qu'à répondre à vos questions. Aucun modèle n'est entraîné sur vos données, aucune revente, aucun profilage.">Documents are used only to answer your questions. No model is trained on your data, no resale, no profiling.</p></div>
   </div>
 </div></section>
 
 <section id="faq"><div class="wrap" style="max-width:760px">
   <span class="kicker">FAQ</span>
-  <h2 style="text-align:center">Questions fréquentes</h2>
+  <h2 style="text-align:center" data-en="Common questions" data-fr="Questions fréquentes">Common questions</h2>
   <div style="margin-top:36px" id="faqs">
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Qui peut utiliser l'assistant ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Les copropriétaires de la copropriété, chacun avec ses identifiants personnels. L'accès est attribué sur invitation.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>L'assistant peut-il se tromper ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Il ne peut répondre qu'à partir de ses documents, et il cite toujours sa source — vous pouvez vérifier. Si deux documents se contredisent, il le signale. Pour les questions juridiques à conséquences, il vous renverra vers le notaire ou le syndic.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Mes questions sont-elles visibles des autres copropriétaires ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non. Chaque conversation est privée. Seule la base documentaire est commune.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Quels documents sont inclus ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">PV d'assemblées générales, acte de base et règlement de copropriété, contrats d'assurance, devis et factures de travaux, contrats fournisseurs, liste des contacts officiels. Les relevés bancaires peuvent être tenus hors de la base si la copropriété le souhaite.</div></div>
-    <div class="card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'"><b>Ça remplace le syndic ? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6">Non — et c'est voulu. C'est un archiviste intelligent qui vous fait gagner du temps. Les décisions, les signatures et les obligations légales restent humaines.</div></div>
+    <div class="faq-item card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer"><b data-en="Who can use the assistant? <span style='float:right;color:var(--vio)'>+</span>" data-fr="Qui peut utiliser l'assistant ? <span style='float:right;color:var(--vio)'>+</span>">Who can use the assistant? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6" data-en="The co-owners of the condominium, each with their personal credentials. Access is granted by invitation." data-fr="Les copropriétaires de la copropriété, chacun avec ses identifiants personnels. L'accès est attribué sur invitation.">The co-owners of the condominium, each with their personal credentials. Access is granted by invitation.</div></div>
+    <div class="faq-item card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer"><b data-en="Can the assistant be wrong? <span style='float:right;color:var(--vio)'>+</span>" data-fr="L'assistant peut-il se tromper ? <span style='float:right;color:var(--vio)'>+</span>">Can the assistant be wrong? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6" data-en="It can only answer from its documents, and always cites its source — you can check. If two documents contradict each other, it flags it. For legally binding questions, it will point you to the notary or the managing agent." data-fr="Il ne peut répondre qu'à partir de ses documents, et il cite toujours sa source — vous pouvez vérifier. Si deux documents se contredisent, il le signale. Pour les questions juridiques à conséquences, il vous renverra vers le notaire ou le syndic.">It can only answer from its documents, and always cites its source — you can check. If two documents contradict each other, it flags it. For legally binding questions, it will point you to the notary or the managing agent.</div></div>
+    <div class="faq-item card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer"><b data-en="Are my questions visible to other co-owners? <span style='float:right;color:var(--vio)'>+</span>" data-fr="Mes questions sont-elles visibles des autres copropriétaires ? <span style='float:right;color:var(--vio)'>+</span>">Are my questions visible to other co-owners? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6" data-en="No. Each conversation is private. Only the document base is shared." data-fr="Non. Chaque conversation est privée. Seule la base documentaire est commune.">No. Each conversation is private. Only the document base is shared.</div></div>
+    <div class="faq-item card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer"><b data-en="Which documents are included? <span style='float:right;color:var(--vio)'>+</span>" data-fr="Quels documents sont inclus ? <span style='float:right;color:var(--vio)'>+</span>">Which documents are included? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6" data-en="General meeting minutes, deed and building rules, insurance policies, work quotes and invoices, supplier contracts, official contact list. Bank statements can be kept out of the base if the condominium prefers." data-fr="PV d'assemblées générales, acte de base et règlement de copropriété, contrats d'assurance, devis et factures de travaux, contrats fournisseurs, liste des contacts officiels. Les relevés bancaires peuvent être tenus hors de la base si la copropriété le souhaite.">General meeting minutes, deed and building rules, insurance policies, work quotes and invoices, supplier contracts, official contact list. Bank statements can be kept out of the base if the condominium prefers.</div></div>
+    <div class="faq-item card" style="border-radius:10px;margin-bottom:10px;padding:18px 22px;cursor:pointer"><b data-en="Does it replace the managing agent? <span style='float:right;color:var(--vio)'>+</span>" data-fr="Ça remplace le syndic ? <span style='float:right;color:var(--vio)'>+</span>">Does it replace the managing agent? <span style="float:right;color:var(--vio)">+</span></b><div style="display:none;margin-top:10px;color:var(--mut);font-size:13.5px;line-height:1.6" data-en="No — by design. It's a smart archivist that saves you time. Decisions, signatures and legal obligations remain human." data-fr="Non — et c'est voulu. C'est un archiviste intelligent qui vous fait gagner du temps. Les décisions, les signatures et les obligations légales restent humaines.">No — by design. It's a smart archivist that saves you time. Decisions, signatures and legal obligations remain human.</div></div>
   </div>
 </div></section>
 
 <section id="access"><div class="wrap">
   <div class="bigcta">
-    <h2>Accès membres</h2>
-    <p>Vous êtes copropriétaire ? Connectez-vous avec vos identifiants personnels. L'accès est strictement limité aux membres de la copropriété.</p>
-    <a class="btn btn-p btn-big" style="background:#fff;color:#4c1d95;border-color:#fff" href="/acoisser/access" rel="nofollow noopener">Se connecter →</a>
+    <h2 data-en="Member access" data-fr="Accès membres">Member access</h2>
+    <p data-en="Are you a co-owner? Sign in with your personal credentials. Access is strictly limited to condominium members." data-fr="Vous êtes copropriétaire ? Connectez-vous avec vos identifiants personnels. L'accès est strictement limité aux membres de la copropriété.">Are you a co-owner? Sign in with your personal credentials. Access is strictly limited to condominium members.</p>
+    <a class="btn btn-p btn-big" style="background:#fff;color:#4c1d95;border-color:#fff" href="/acoisser/access" rel="nofollow noopener" data-en="Sign in →" data-fr="Se connecter →">Sign in →</a>
   </div>
 </div></section>
 
 <footer><div class="wrap cols">
   <div><div class="logo" style="font-size:13px;margin-bottom:8px"><div class="mark" style="width:18px;height:18px;font-size:9px">A</div>ACOISSER</div>
-  L'assistant IA des copropriétés établies.<br>Une initiative indépendante — Bruxelles.</div>
-  <div style="text-align:right">Accès réservé aux copropriétaires.<br>© 2026 Acoisser</div>
+  <span data-en="The AI assistant for established condominiums.<br>An independent initiative — Brussels." data-fr="L'assistant IA des copropriétés établies.<br>Une initiative indépendante — Bruxelles.">The AI assistant for established condominiums.<br>An independent initiative — Brussels.</span></div>
+  <div style="text-align:right"><span data-en="Access reserved for co-owners.<br>© 2026 Acoisser" data-fr="Accès réservé aux copropriétaires.<br>© 2026 Acoisser">Access reserved for co-owners.<br>© 2026 Acoisser</span></div>
 </div></footer>
+
+<script>
+// FAQ toggle + i18n
+document.querySelectorAll('.faq-item').forEach(function(it){
+  it.addEventListener('click', function(){
+    var d = it.querySelector('div');
+    d.style.display = d.style.display === 'block' ? 'none' : 'block';
+  });
+});
+function setLang(lang){
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    if (el.dataset[lang]) el.innerHTML = el.dataset[lang];
+  });
+  document.documentElement.lang = lang;
+  document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+  document.getElementById('btn-fr').classList.toggle('on', lang === 'fr');
+  try { localStorage.setItem('acoisser-lang', lang); } catch(e) {}
+}
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('acoisser-lang'); } catch(e) {}
+  if (saved === 'fr') setLang('fr');
+})();
+</script>
 </body>
 </html>
