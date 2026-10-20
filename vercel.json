@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/acoisser/access",
+      "destination": "https://croix58.srv1280102.hstgr.cloud",
+      "statusCode": 302
+    }
+  ]
+}
