@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ETHOS — Change your habits, change who you are</title>
+<meta name="description" content="ETHOS is the iPhone habit tracker that starts with who you are becoming. Write it once, prove it every day. No account, no ads, no tracking.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ETHOS — Change your habits, change who you are">
+<meta property="og:description" content="The iPhone habit tracker that starts with who you are becoming. Every habit you log is proof.">
+<meta property="og:image" content="https://landing-pages-rose-seven.vercel.app/ethos/img/og.png">
+<meta property="og:url" content="https://landing-pages-rose-seven.vercel.app/ethos/">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+:root {
+  --bg: #0A0A0A; --fg: #F2F2F2; --dim: #8C8C8C; --line: #2A2A2A;
+  --acid: #D7FF00; --gold: #FFD700; --cyan: #00E5FF; --magenta: #FF00E5;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--fg); font-family: var(--mono); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+img { display: block; max-width: 100%; height: auto; }
+::selection { background: var(--acid); color: var(--bg); }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+.label { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); }
+.label b { color: var(--acid); font-weight: 400; }
+.acid { color: var(--acid); }
+mark { background: var(--acid); color: var(--bg); padding: 0 .12em; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 22px; font: 700 14px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border: 3px solid var(--fg); cursor: pointer; transition: transform .12s, box-shadow .12s; }
+.btn-primary { background: var(--acid); color: var(--bg); border-color: var(--acid); box-shadow: 6px 6px 0 var(--fg); }
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--fg); }
+.btn-primary:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--fg); }
+.btn-ghost { background: transparent; color: var(--fg); }
+.btn-ghost:hover { background: var(--fg); color: var(--bg); }
+.btn:focus-visible, input:focus-visible, summary:focus-visible, .tile:focus-visible { outline: 3px solid var(--magenta); outline-offset: 3px; }
+
+/* Nav */
+nav { position: sticky; top: 0; z-index: 10; background: rgba(10,10,10,.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 2px solid var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: .2em; text-decoration: none; }
+.logo img { width: 30px; height: 30px; border: 2px solid var(--fg); }
+.cursor { display: inline-block; width: .6em; color: var(--acid); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.links { display: flex; gap: 26px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+.links a { text-decoration: none; color: var(--dim); }
+.links a:hover { color: var(--acid); }
+nav .btn { padding: 10px 14px; font-size: 11px; box-shadow: 4px 4px 0 var(--fg); }
+
+/* Hero */
+.hero { padding: 72px 0 96px; border-bottom: 2px solid var(--line); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(40px, 6.4vw, 84px); line-height: .98; letter-spacing: -.02em; text-transform: uppercase; margin: 22px 0 26px; }
+.lead { font-size: clamp(16px, 1.6vw, 19px); color: #CFCFCF; max-width: 34em; }
+.lead strong { color: var(--fg); }
+.cta-row { display: flex; flex-wrap: wrap; gap: 16px; margin: 36px 0 22px; }
+.ticks { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.ticks span::before { content: "■ "; color: var(--acid); }
+.phone { position: relative; justify-self: center; width: min(340px, 82vw); }
+.phone img { border: 3px solid var(--fg); box-shadow: 14px 14px 0 var(--acid); }
+.sticker { position: absolute; left: -26px; bottom: 54px; background: var(--magenta); color: var(--bg); font-size: 11px; font-weight: 700; letter-spacing: .16em; padding: 8px 12px; transform: rotate(-6deg); border: 2px solid var(--bg); }
+
+/* Sections */
+section { padding: 104px 0; border-bottom: 2px solid var(--line); }
+h2 { font-size: clamp(30px, 4.6vw, 58px); line-height: 1.02; text-transform: uppercase; letter-spacing: -.01em; margin: 16px 0 24px; }
+.intro { max-width: 40em; color: #CFCFCF; font-size: 17px; }
+
+/* Manifesto */
+.shift { margin-top: 48px; border: 3px solid var(--fg); }
+.shift-row { display: grid; grid-template-columns: 1fr 64px 1fr; align-items: center; border-bottom: 2px solid var(--line); }
+.shift-row:last-child { border-bottom: 0; }
+.shift-row > div { padding: 22px 24px; font-size: clamp(15px, 1.7vw, 20px); }
+.from { color: var(--dim); text-decoration: line-through; text-decoration-color: #555; }
+.arrow { text-align: center; color: var(--acid); font-size: 24px !important; padding: 0 !important; }
+.to { font-weight: 700; }
+.shift-head { background: var(--fg); color: var(--bg); font-size: 12px !important; letter-spacing: .2em; padding: 10px 24px !important; }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.step { border: 3px solid var(--fg); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.step .num { font-size: 56px; font-weight: 700; line-height: 1; color: var(--acid); }
+.step h3 { font-size: 22px; letter-spacing: .12em; }
+.step p { color: #CFCFCF; font-size: 15px; }
+.statement { border-left: 4px solid var(--acid); padding: 8px 14px; font-size: 15px; margin-top: auto; }
+
+/* Demo tile */
+.tile { position: relative; overflow: hidden; margin-top: auto; background: #111; border: 3px solid var(--cyan); padding: 18px; cursor: pointer; user-select: none; -webkit-user-select: none; text-align: left; color: var(--fg); font-family: var(--mono); width: 100%; box-shadow: 6px 6px 0 var(--cyan); transition: transform .1s; }
+.tile:active { transform: scale(.98); }
+.tile .fill { position: absolute; inset: 0; background: var(--cyan); transform: translateX(-101%); transition: transform .55s cubic-bezier(.7,0,.2,1); }
+.tile.done .fill { transform: translateX(0); }
+.tile > *:not(.fill) { position: relative; }
+.tile.done { color: var(--bg); }
+.tile-top { display: flex; align-items: baseline; gap: 10px; }
+.tile .count { font-size: 44px; font-weight: 700; line-height: 1; color: var(--acid); transition: color .3s; }
+.tile.done .count { color: var(--bg); }
+.tile .small { font-size: 10px; letter-spacing: .16em; line-height: 1.3; opacity: .7; }
+.tile .name { font-weight: 700; letter-spacing: .1em; margin: 14px 0 8px; }
+.segs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.segs i { height: 12px; border: 2px solid currentColor; }
+.segs i.on { background: currentColor; }
+.tile .meta { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .14em; margin-top: 8px; }
+.stamp { position: absolute; right: 14px; top: 16px; border: 3px solid var(--bg); color: var(--bg); font-weight: 700; letter-spacing: .14em; padding: 4px 8px; transform: rotate(8deg) scale(2.2); opacity: 0; transition: transform .25s .45s cubic-bezier(.2,1.6,.4,1), opacity .2s .45s; }
+.tile.done .stamp { opacity: 1; transform: rotate(8deg) scale(1); }
+.try { font-size: 11px; letter-spacing: .18em; color: var(--dim); display: flex; justify-content: space-between; }
+.try button { background: none; border: 0; color: var(--dim); font: inherit; letter-spacing: inherit; text-decoration: underline; cursor: pointer; }
+
+/* Splits */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.split + .split { margin-top: 120px; }
+.split.rev .shot { order: -1; }
+.shot { justify-self: center; width: min(320px, 80vw); }
+.shot img { border: 3px solid var(--fg); }
+.shot.cyan img { box-shadow: -14px 14px 0 var(--acid); }
+.shot.gold img { box-shadow: 14px 14px 0 var(--gold); }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.chips span { border: 2px solid var(--fg); padding: 6px 10px; font-size: 12px; letter-spacing: .12em; }
+
+/* Feature grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 120px; }
+.card { border: 3px solid var(--fg); padding: 26px; background: var(--bg); box-shadow: 8px 8px 0 var(--c, var(--acid)); }
+.card .tag { display: inline-block; background: var(--c, var(--acid)); color: var(--bg); font-size: 11px; font-weight: 700; letter-spacing: .16em; padding: 4px 8px; margin-bottom: 16px; }
+.card h3 { font-size: 19px; letter-spacing: .1em; margin-bottom: 10px; }
+.card p { color: #CFCFCF; font-size: 15px; }
+
+/* Privacy */
+.privacy { background: var(--acid); color: var(--bg); }
+.privacy .label { color: rgba(10,10,10,.6); }
+.nos { list-style: none; margin: 30px 0 34px; }
+.nos li { font-size: clamp(34px, 6.6vw, 88px); font-weight: 700; line-height: 1.02; letter-spacing: -.02em; border-bottom: 3px solid var(--bg); padding: 6px 0; }
+.privacy p { max-width: 38em; font-size: 17px; }
+.privacy a { font-weight: 700; }
+
+/* FAQ */
+details { border: 3px solid var(--fg); margin-top: -3px; }
+summary { list-style: none; cursor: pointer; padding: 22px 24px; font-weight: 700; letter-spacing: .06em; display: flex; justify-content: space-between; gap: 20px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--acid); font-size: 22px; line-height: 1; }
+details[open] summary::after { content: "−"; }
+details p { padding: 0 24px 24px; color: #CFCFCF; max-width: 46em; }
+.faq { margin-top: 48px; }
+
+/* Commitment */
+.commit { text-align: center; }
+.commit h2 { margin-bottom: 36px; }
+.field { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; font-size: clamp(16px, 2.2vw, 24px); max-width: 920px; margin: 0 auto; }
+.field input { flex: 1 1 300px; background: transparent; border: 0; border-bottom: 3px solid var(--acid); color: var(--fg); font: inherit; font-weight: 700; padding: 8px 4px; outline: none; min-width: 0; }
+.field input::placeholder { color: #555; }
+.proof { max-width: 640px; margin: 44px auto 40px; border: 3px solid var(--fg); box-shadow: 10px 10px 0 var(--acid); text-align: left; }
+.proof-head { display: flex; justify-content: space-between; background: var(--fg); color: var(--bg); font-size: 12px; letter-spacing: .2em; padding: 10px 18px; font-weight: 700; }
+.proof-body { padding: 26px 22px 30px; }
+.proof .big { display: flex; align-items: baseline; gap: 10px; }
+.proof .big b { font-size: 64px; line-height: 1; color: var(--acid); }
+.proof .says { margin-top: 18px; font-size: clamp(17px, 2.2vw, 22px); }
+.proof .says em { font-style: normal; color: var(--acid); }
+.note { font-size: 12px; color: var(--dim); letter-spacing: .1em; margin-top: 18px; }
+
+/* Footer */
+footer { padding: 48px 0 64px; color: var(--dim); font-size: 13px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+footer a { color: var(--fg); margin-right: 18px; }
+footer a:hover { color: var(--acid); }
+
+/* Reveal */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s, transform .6s; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .links { display: none; }
+  .hero { padding: 48px 0 72px; }
+  .hero .wrap, .split { grid-template-columns: 1fr; gap: 48px; }
+  .split.rev .shot { order: 0; }
+  .steps, .grid { grid-template-columns: 1fr; }
+  .grid { margin-top: 88px; }
+  .split + .split { margin-top: 88px; }
+  section { padding: 80px 0; }
+  .shift-row { grid-template-columns: 1fr; }
+  .shift-row .arrow { display: none; }
+  .shift-row .from { padding-bottom: 0; }
+  .shift-row .to { padding-top: 6px; }
+  .shift-row .to::before { content: "→ "; color: var(--acid); }
+  .shift-head { display: none; }
+  .sticker { left: -8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/icon.png" alt="" width="30" height="30">ETHOS<span class="cursor">_</span></a>
+    <div class="links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-primary" href="#commit">Get ETHOS</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="label"><b>■</b> Habit tracker · Identity first · iPhone</p>
+      <h1>Change your habits.<br>Change <mark>who you are.</mark></h1>
+      <p class="lead">Most trackers count checkmarks. <strong>ETHOS starts with who you are becoming</strong>, and turns every habit you log into proof of it. Write it once. Prove it every day.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" data-store href="#commit">Coming soon on the App Store</a>
+        <a class="btn btn-ghost" href="#how">How it works ↓</a>
+      </div>
+      <div class="ticks"><span>No account</span><span>No ads</span><span>No tracking</span><span>iOS 18+</span></div>
+    </div>
+    <div class="phone">
+      <img src="img/dashboard.jpg" width="640" height="1391" alt="The ETHOS dashboard: an identity statement, an identity streak, and colored habit tiles with their streaks.">
+      <span class="sticker">REAL SCREEN</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap reveal">
+    <p class="label"><b>01</b> / The idea</p>
+    <h2>Willpower runs out.<br><span class="acid">Identity doesn't.</span></h2>
+    <p class="intro">A goal is something you chase. An identity is something you protect. Once a habit becomes part of who you are, you stop negotiating with yourself every morning. ETHOS is built around that single idea.</p>
+    <div class="shift">
+      <div class="shift-row"><div class="shift-head">YOU TELL YOURSELF</div><div class="shift-head"></div><div class="shift-head">YOU BECOME</div></div>
+      <div class="shift-row"><div class="from">“I should work out.”</div><div class="arrow">→</div><div class="to">Someone who trains.</div></div>
+      <div class="shift-row"><div class="from">“I’ll try to read more.”</div><div class="arrow">→</div><div class="to">A reader.</div></div>
+      <div class="shift-row"><div class="from">“I need to stop scrolling.”</div><div class="arrow">→</div><div class="to">Someone who guards their focus.</div></div>
+      <div class="shift-row"><div class="from">“I’ll start saving next month.”</div><div class="arrow">→</div><div class="to">Someone who pays themselves first.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="label"><b>02</b> / How it works</p>
+      <h2>Declare. Prove. Become.</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>DECLARE</h3>
+        <p>Write one sentence at the top of your screen. It is the first thing you see, every time you open the app.</p>
+        <p class="statement">I am becoming someone who keeps promises to myself.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>PROVE</h3>
+        <p>Tap a habit. The tile fills up. A full tile is a proven day. Try it:</p>
+        <button class="tile" id="tile" type="button" aria-label="Demo habit tile: Drink water, three times a day. Tap to log.">
+          <span class="fill"></span>
+          <span class="stamp">✓ PROOF</span>
+          <span class="tile-top"><span class="count" id="streak">5</span><span class="small">DAY<br>STREAK</span></span>
+          <span class="name" style="display:block">DRINK WATER</span>
+          <span class="segs" id="segs"><i></i><i></i><i></i></span>
+          <span class="meta"><span id="today">0/3 TODAY</span><span>★9</span></span>
+        </button>
+        <div class="try"><span>TAP THE TILE ↑</span><button type="button" id="reset">RESET</button></div>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>BECOME</h3>
+        <p>Proven days stack into your <strong>identity streak</strong>: every habit you planned, done, day after day. Rest days you planned never break it.</p>
+        <p class="statement"><span class="acid" style="font-size:28px;font-weight:700">47</span> DAY IDENTITY STREAK</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="split reveal">
+      <div>
+        <p class="label"><b>03</b> / Apple Health</p>
+        <h2>Let your body<br>check in.</h2>
+        <p class="intro">Connect Apple Health and habits like <strong>Walk 8,000 steps</strong>, <strong>Deep sleep 1 hour</strong> or <strong>HRV above 40 ms</strong> tick themselves the day you hit the goal. Read only. Your health data never leaves your iPhone.</p>
+        <div class="chips"><span>STEPS</span><span>STAND</span><span>EXERCISE</span><span>ENERGY</span><span>SLEEP · DEEP · REM</span><span>MINDFUL</span><span>HRV</span></div>
+      </div>
+      <div class="shot cyan"><img src="img/health.jpg" width="640" height="1391" loading="lazy" alt="ETHOS health habits: steps, deep sleep, weekly steps and HRV goals linked to Apple Health."></div>
+    </div>
+
+    <div class="split rev reveal">
+      <div>
+        <p class="label"><b>04</b> / Setup</p>
+        <h2>Start in<br>ten seconds.</h2>
+        <p class="intro">Type anything, or pick from 30+ ideas. The icon, pillar, schedule and Health goal set themselves. Then change whatever you like.</p>
+        <div class="chips"><span>WORKOUT</span><span>READ</span><span>DRINK WATER</span><span>COLD SHOWER</span><span>DEEP WORK</span><span>NO SUGAR</span></div>
+      </div>
+      <div class="shot gold"><img src="img/ideas.jpg" width="640" height="1391" loading="lazy" alt="Creating a habit in ETHOS: type a name or pick from a list of ideas such as Workout, Read and Drink water."></div>
+    </div>
+
+    <div class="grid">
+      <div class="card reveal" style="--c: var(--acid)"><span class="tag">PILLARS</span><h3>FOUR SIDES OF YOU</h3><p>Health, Wealth, Happiness, Other. Every pillar has its own color, so you see at a glance which side of your life is moving.</p></div>
+      <div class="card reveal" style="--c: var(--gold)"><span class="tag">RHYTHM</span><h3>ANY SCHEDULE</h3><p>3× a day. 2× a week. Once a month. Mondays only. Every 3 days. ETHOS follows your life, not the other way round.</p></div>
+      <div class="card reveal" style="--c: var(--magenta)"><span class="tag">AVOID</span><h3>COUNT DAYS CLEAN</h3><p>For what you want to quit: no sugar, no alcohol, less social media. Watch the clean days add up.</p></div>
+      <div class="card reveal" style="--c: var(--cyan)"><span class="tag">TIMER</span><h3>BUILT-IN CLOCK</h3><p>Deep work 25:00. Cold shower 2:00. Start the timer right from the tile.</p></div>
+      <div class="card reveal" style="--c: var(--fg)"><span class="tag">HISTORY</span><h3>FIX THE PAST</h3><p>Did it but forgot to log it? Add yesterday in one tap, or fix any day in the month calendar.</p></div>
+      <div class="card reveal" style="--c: var(--acid)"><span class="tag">PROGRESS</span><h3>RAISE THE BAR</h3><p>When your proof is solid, ETHOS suggests a slightly higher goal. Never forced. Always your call.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy" id="privacy">
+  <div class="wrap reveal">
+    <p class="label">05 / Privacy</p>
+    <ul class="nos">
+      <li>NO ACCOUNT.</li>
+      <li>NO SERVER.</li>
+      <li>NO ANALYTICS.</li>
+      <li>NO ADS.</li>
+      <li>NO TRACKING.</li>
+    </ul>
+    <p>Who you are becoming is nobody's business. Your habits, your statement and your history live on your iPhone and nowhere else. This page doesn't track you either. <a href="https://rooklabs-ethos.vercel.app/">Read the privacy policy →</a></p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap reveal">
+    <p class="label"><b>06</b> / FAQ</p>
+    <h2>Questions.</h2>
+    <div class="faq">
+      <details><summary>Do I need an account?</summary><p>No. Open the app and start. There is nothing to sign up for and nothing to log into.</p></details>
+      <details><summary>What if I miss a day?</summary><p>Days you didn't plan a habit never count against you. If you did it but forgot to log it, add it for yesterday in one tap, or fix any past day in the calendar.</p></details>
+      <details><summary>Does it work without Apple Health?</summary><p>Yes. Apple Health is optional. Without it, every habit can be logged by hand.</p></details>
+      <details><summary>Where is my data?</summary><p>On your iPhone only. ETHOS has no server. Deleting the app deletes your data.</p></details>
+      <details><summary>Which devices does it run on?</summary><p>iPhone, with iOS 18 or later.</p></details>
+      <details><summary>Why does it look like this?</summary><p>Because a habit tracker is a tool. Monospace type, hard edges, no confetti. Just proof.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="commit" id="commit">
+  <div class="wrap reveal">
+    <p class="label"><b>07</b> / Your turn</p>
+    <h2>Who are you becoming?</h2>
+    <label class="field" for="who">
+      <span>I am becoming someone who</span>
+      <input id="who" type="text" maxlength="60" autocomplete="off" spellcheck="false" placeholder="trains before breakfast">
+    </label>
+    <div class="proof" aria-live="polite">
+      <div class="proof-head"><span>ETHOS</span><span>DAY 1</span></div>
+      <div class="proof-body">
+        <div class="big"><b>0</b><span class="small label">DAY IDENTITY STREAK</span></div>
+        <p class="says">I am becoming someone who <em id="echo">trains before breakfast</em>.</p>
+        <p class="note">NOW PROVE IT. · WHAT YOU TYPE STAYS ON THIS PAGE.</p>
+      </div>
+    </div>
+    <a class="btn btn-primary" data-store href="mailto:artusbe@gmail.com?subject=Tell%20me%20when%20ETHOS%20launches">Notify me at launch</a>
+    <p class="note" id="soon">Coming soon on the App Store for iPhone.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong style="color:var(--fg)">ETHOS<span class="acid">_</span></strong> by Rook Labs · © 2026</div>
+    <div><a href="https://rooklabs-ethos.vercel.app/">Privacy policy</a><a href="https://rooklabs-ethos.vercel.app/">Support</a><a href="mailto:artusbe@gmail.com">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+// Set this once ETHOS is live (App Store Connect › App Information › Apple ID),
+// e.g. "https://apps.apple.com/app/id1234567890": every store button switches over.
+const APP_STORE_URL = "";
+
+if (APP_STORE_URL) {
+  document.querySelectorAll("[data-store]").forEach(a => {
+    a.href = APP_STORE_URL;
+    a.textContent = "Download on the App Store";
+  });
+  document.getElementById("soon").remove();
+} else {
+  // Before launch, the hero button leads to the commitment + notify section.
+  document.querySelector(".hero [data-store]").href = "#commit";
+}
+
+// Demo tile: three taps fill it, the third one proves the day.
+const tile = document.getElementById("tile");
+const segs = [...document.querySelectorAll("#segs i")];
+const today = document.getElementById("today");
+const streak = document.getElementById("streak");
+let taps = 0;
+function render() {
+  segs.forEach((s, i) => s.classList.toggle("on", i < taps));
+  today.textContent = taps >= 3 ? "DONE" : taps + "/3 TODAY";
+  tile.classList.toggle("done", taps >= 3);
+  streak.textContent = taps >= 3 ? 6 : 5;
+}
+tile.addEventListener("click", () => {
+  if (taps < 3) { taps++; render(); if (taps === 3 && navigator.vibrate) navigator.vibrate(30); }
+});
+document.getElementById("reset").addEventListener("click", () => { taps = 0; render(); });
+
+// Commitment: echo the visitor's statement, cycling examples while empty.
+const who = document.getElementById("who");
+const echo = document.getElementById("echo");
+const examples = ["trains before breakfast", "reads every night", "keeps promises to myself", "saves before spending", "shows up on hard days"];
+let ex = 0;
+setInterval(() => {
+  if (who.value.trim()) return;
+  ex = (ex + 1) % examples.length;
+  who.placeholder = examples[ex];
+  echo.textContent = examples[ex];
+}, 2600);
+who.addEventListener("input", () => {
+  echo.textContent = who.value.trim() || who.placeholder;
+});
+
+// Reveal on scroll.
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
