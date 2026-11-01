@@ -129,6 +129,14 @@ h2 { font-size: clamp(30px, 4.6vw, 58px); line-height: 1.02; text-transform: upp
 .card h3 { font-size: 19px; letter-spacing: .1em; margin-bottom: 10px; }
 .card p { color: #CFCFCF; font-size: 15px; }
 
+/* Screen strip */
+.strip { display: flex; gap: 28px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 40px max(20px, calc((100vw - 1160px) / 2 + 20px)) 28px; scroll-padding-inline: max(20px, calc((100vw - 1160px) / 2 + 20px)); scrollbar-width: thin; scrollbar-color: var(--acid) var(--line); }
+.strip figure { flex: 0 0 auto; width: 250px; scroll-snap-align: start; }
+.strip img { border: 3px solid var(--fg); box-shadow: 8px 8px 0 var(--acid); }
+.strip figure:nth-child(3n+2) img { box-shadow: 8px 8px 0 var(--cyan); }
+.strip figure:nth-child(3n) img { box-shadow: 8px 8px 0 var(--magenta); }
+.strip figcaption { margin-top: 18px; font-size: 12px; letter-spacing: .2em; color: var(--dim); }
+
 /* Privacy */
 .privacy { background: var(--acid); color: var(--bg); }
 .privacy .label { color: rgba(10,10,10,.6); }
@@ -173,6 +181,7 @@ footer a:hover { color: var(--acid); }
 
 @media (max-width: 900px) {
   .links { display: none; }
+  .strip figure { width: 210px; }
   .hero { padding: 48px 0 72px; }
   .hero .wrap, .split { grid-template-columns: 1fr; gap: 48px; }
   .split.rev .shot { order: 0; }
@@ -202,6 +211,7 @@ footer a:hover { color: var(--acid); }
     <div class="links">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
+      <a href="#screens">Screens</a>
       <a href="#privacy">Privacy</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -222,7 +232,7 @@ footer a:hover { color: var(--acid); }
       <div class="ticks"><span>No account</span><span>No ads</span><span>No tracking</span><span>iOS 18+</span></div>
     </div>
     <div class="phone">
-      <img src="img/dashboard.jpg" width="640" height="1391" alt="The ETHOS dashboard: an identity statement, an identity streak, and colored habit tiles with their streaks.">
+      <img src="img/screens/01_dashboard.jpg" width="640" height="1387" alt="The ETHOS dashboard: an identity statement, an identity streak, and colored habit tiles with their streaks.">
       <span class="sticker">REAL SCREEN</span>
     </div>
   </div>
@@ -289,17 +299,17 @@ footer a:hover { color: var(--acid); }
         <p class="intro">Connect Apple Health and habits like <strong>Walk 8,000 steps</strong>, <strong>Deep sleep 1 hour</strong> or <strong>HRV above 40 ms</strong> tick themselves the day you hit the goal. Read only. Your health data never leaves your iPhone.</p>
         <div class="chips"><span>STEPS</span><span>STAND</span><span>EXERCISE</span><span>ENERGY</span><span>SLEEP · DEEP · REM</span><span>MINDFUL</span><span>HRV</span></div>
       </div>
-      <div class="shot cyan"><img src="img/health.jpg" width="640" height="1391" loading="lazy" alt="ETHOS health habits: steps, deep sleep, weekly steps and HRV goals linked to Apple Health."></div>
+      <div class="shot cyan"><img src="img/screens/05_health.jpg" width="640" height="1387" loading="lazy" alt="The ETHOS Body screen: connect Apple Health to read steps, energy, stand time, heart rate, HRV, sleep and mindful minutes."></div>
     </div>
 
     <div class="split rev reveal">
       <div>
         <p class="label"><b>04</b> / Setup</p>
         <h2>Start in<br>ten seconds.</h2>
-        <p class="intro">Type anything, or pick from 30+ ideas. The icon, pillar, schedule and Health goal set themselves. Then change whatever you like.</p>
-        <div class="chips"><span>WORKOUT</span><span>READ</span><span>DRINK WATER</span><span>COLD SHOWER</span><span>DEEP WORK</span><span>NO SUGAR</span></div>
+        <p class="intro">Type anything, or pick from 30+ ideas. The icon, pillar, schedule and Health goal set themselves. Build a habit or avoid one, pick a color, link it to Apple Health. Done.</p>
+        <div class="chips"><span>HEALTH</span><span>WEALTH</span><span>HAPPINESS</span><span>OTHER</span><span>BUILD</span><span>⊘ AVOID</span></div>
       </div>
-      <div class="shot gold"><img src="img/ideas.jpg" width="640" height="1391" loading="lazy" alt="Creating a habit in ETHOS: type a name or pick from a list of ideas such as Workout, Read and Drink water."></div>
+      <div class="shot gold"><img src="img/screens/02_editor_frequency.jpg" width="640" height="1387" loading="lazy" alt="Editing a habit in ETHOS: name, icon, color, pillar, build or avoid, and an optional Apple Health goal."></div>
     </div>
 
     <div class="grid">
@@ -313,9 +323,25 @@ footer a:hover { color: var(--acid); }
   </div>
 </section>
 
+<section id="screens">
+  <div class="wrap reveal">
+    <p class="label"><b>05</b> / Inside the app</p>
+    <h2>Every screen.<br>No filler.</h2>
+  </div>
+  <div class="strip">
+    <figure><img src="img/screens/01_dashboard.jpg" width="640" height="1387" loading="lazy" alt="Dashboard with habit tiles and streaks."><figcaption>DASHBOARD</figcaption></figure>
+    <figure><img src="img/screens/06_identity.jpg" width="640" height="1387" loading="lazy" alt="Identity screen with the identity statement and identity streak."><figcaption>IDENTITY</figcaption></figure>
+    <figure><img src="img/screens/04_onboarding.jpg" width="640" height="1387" loading="lazy" alt="First-launch tutorial asking: who are you becoming?"><figcaption>FIRST LAUNCH</figcaption></figure>
+    <figure><img src="img/screens/03_ideas_list.jpg" width="640" height="1387" loading="lazy" alt="New habit with a list of ideas."><figcaption>NEW HABIT</figcaption></figure>
+    <figure><img src="img/screens/02_editor_frequency.jpg" width="640" height="1387" loading="lazy" alt="Habit editor with pillar, build or avoid and Apple Health."><figcaption>EDITOR</figcaption></figure>
+    <figure><img src="img/screens/05_health.jpg" width="640" height="1387" loading="lazy" alt="Body screen to connect Apple Health."><figcaption>BODY</figcaption></figure>
+    <figure><img src="img/screens/07_catchup.jpg" width="640" height="1387" loading="lazy" alt="Month calendar to add or erase past days."><figcaption>CALENDAR</figcaption></figure>
+  </div>
+</section>
+
 <section class="privacy" id="privacy">
   <div class="wrap reveal">
-    <p class="label">05 / Privacy</p>
+    <p class="label">06 / Privacy</p>
     <ul class="nos">
       <li>NO ACCOUNT.</li>
       <li>NO SERVER.</li>
@@ -329,7 +355,7 @@ footer a:hover { color: var(--acid); }
 
 <section id="faq">
   <div class="wrap reveal">
-    <p class="label"><b>06</b> / FAQ</p>
+    <p class="label"><b>07</b> / FAQ</p>
     <h2>Questions.</h2>
     <div class="faq">
       <details><summary>Do I need an account?</summary><p>No. Open the app and start. There is nothing to sign up for and nothing to log into.</p></details>
@@ -344,7 +370,7 @@ footer a:hover { color: var(--acid); }
 
 <section class="commit" id="commit">
   <div class="wrap reveal">
-    <p class="label"><b>07</b> / Your turn</p>
+    <p class="label"><b>08</b> / Your turn</p>
     <h2>Who are you becoming?</h2>
     <label class="field" for="who">
       <span>I am becoming someone who</span>
