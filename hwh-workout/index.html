@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HWH Workout — Stop planning workouts. Start one.</title>
+<meta name="description" content="Bodyweight workouts of 6, 12, 18 or 30 minutes. HWH Workout picks the moves, shows each one, counts you in and talks you through it. No gym, no gear, no account.">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HWH Workout — Stop planning workouts. Start one.">
+<meta property="og:description" content="Pick 6, 12, 18 or 30 minutes. The app picks the moves, counts you in and coaches you out loud. No gym, no gear, no account.">
+<meta property="og:image" content="https://landing-pages-rose-seven.vercel.app/hwh-workout/img/og.png">
+<meta property="og:url" content="https://landing-pages-rose-seven.vercel.app/hwh-workout/">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+:root {
+  --bg: #0B0B0D; --card: #111114; --card2: #16161A; --fg: #FAFAFA; --muted: #A1A1AA; --line: rgba(255,255,255,.1);
+  --pink: #FF4F92; --gold: #E7B44A; --limb-back: #66666C;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+section { padding: 120px 0; }
+.label { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.label b { color: var(--pink); font-weight: 700; }
+h2 { font-size: clamp(32px, 4.4vw, 54px); line-height: 1.06; letter-spacing: -.025em; margin: 14px 0 20px; font-weight: 800; }
+.intro { max-width: 36em; color: var(--muted); font-size: 18px; }
+.pk { color: var(--pink); }
+.caps { text-transform: uppercase; font-weight: 900; letter-spacing: .02em; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 14px; font: 700 16px/1 var(--sans); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--pink); color: #0B0B0D; }
+.btn-primary:hover { background: #FF6BA5; }
+.btn-ghost { background: rgba(255,255,255,.04); color: var(--fg); border-color: var(--line); }
+.btn-ghost:hover { border-color: rgba(255,255,255,.28); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Nav */
+nav { position: sticky; top: 0; z-index: 10; background: rgba(11,11,13,.78); backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 16px; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+.logo img { border-radius: 8px; }
+.links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+.links a { text-decoration: none; }
+.links a:hover { color: var(--fg); }
+nav .btn { padding: 10px 16px; font-size: 14px; border-radius: 11px; }
+
+/* Hero */
+.hero { padding: 84px 0 110px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; right: -12%; top: -18%; width: 72%; height: 125%; background: radial-gradient(closest-side, rgba(255,79,146,.20), transparent 72%); pointer-events: none; }
+.hero .wrap { display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; position: relative; }
+.hero h1 { font-size: clamp(44px, 6.4vw, 84px); line-height: .98; letter-spacing: -.035em; margin: 20px 0 26px; font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--pink); display: block; }
+.lead { font-size: clamp(17px, 1.7vw, 20px); color: #C9C9D0; max-width: 31em; }
+.lead strong { color: var(--fg); font-weight: 600; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 26px; }
+.ticks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); }
+.ticks span::before { content: "✓"; color: var(--pink); margin-right: 7px; font-weight: 700; }
+
+/* Phones */
+.phone { position: relative; border-radius: 38px; padding: 9px; background: linear-gradient(160deg, #2A2A30, #121215); box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
+.phone img { border-radius: 30px; width: 100%; aspect-ratio: 640 / 1390; object-fit: cover; object-position: top; }
+.duo { position: relative; height: 640px; }
+.duo .phone { position: absolute; width: 290px; }
+.duo .back { right: 0; top: 0; transform: rotate(4deg); opacity: .9; }
+.duo .front { left: 4%; top: 60px; transform: rotate(-3deg); }
+.badge { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 16px; background: rgba(17,17,20,.92); border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(0,0,0,.5); font-size: 14px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.badge b { font-size: 20px; letter-spacing: -.01em; }
+.badge small { display: block; color: var(--muted); font-size: 12px; }
+.badge .dot { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; flex: none; background: rgba(255,79,146,.14); border: 1px solid rgba(255,79,146,.4); color: var(--pink); }
+.badge .dot svg { width: 18px; height: 18px; }
+.badge-1 { left: -6px; bottom: 70px; }
+.badge-2 { right: -8px; top: 300px; }
+
+/* Excuses */
+.excuses { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+.ex { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px 24px 28px; }
+.ex .no { font-size: 15px; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--pink); text-decoration-thickness: 2px; }
+.ex h3 { font-size: 22px; letter-spacing: -.01em; margin: 10px 0 10px; line-height: 1.2; }
+.ex p { color: var(--muted); font-size: 15px; }
+
+/* Trainer demo */
+.try { display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center; }
+.trainer { background: radial-gradient(120% 80% at 50% 0%, #1A1218 0%, var(--card) 62%); border: 1px solid var(--line); border-radius: 30px; padding: 28px 28px 26px; text-align: center; }
+.tr-top { height: 52px; display: grid; place-items: end center; }
+.tr-top span { font-size: 13px; font-weight: 800; letter-spacing: .16em; color: var(--pink); }
+.tr-top span.big { font-size: 44px; line-height: 1; letter-spacing: -.02em; color: var(--fg); font-variant-numeric: tabular-nums; }
+.ring-wrap { position: relative; width: min(100%, 300px); aspect-ratio: 1; margin: 12px auto 0; }
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ring circle { fill: none; stroke-width: 9; }
+.ring .track { stroke: #222226; }
+.ring .prog { stroke: var(--pink); stroke-linecap: round; transition: stroke-dasharray .12s linear; }
+.fig { position: absolute; inset: 21%; width: 58%; height: 58%; overflow: visible; }
+.fig polyline, .fig line { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.center-num { position: absolute; inset: 0; display: grid; place-items: center; font-size: 104px; font-weight: 900; letter-spacing: -.03em; font-variant-numeric: tabular-nums; opacity: 0; transition: opacity .15s; }
+.trainer.preview .center-num { opacity: 1; }
+.trainer.preview .fig { opacity: 0; }
+.trainer h3 { font-size: 26px; font-weight: 900; letter-spacing: .02em; text-transform: uppercase; margin-top: 22px; }
+.trainer .reps { font-size: 13px; font-weight: 800; letter-spacing: .16em; color: var(--pink); margin-top: 4px; }
+.trainer .cue { color: var(--muted); font-size: 15px; margin-top: 8px; min-height: 24px; }
+.tr-ctrl { display: flex; gap: 10px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
+.tr-ctrl .btn { padding: 13px 20px; font-size: 15px; }
+.moves { display: flex; gap: 8px; justify-content: center; margin-top: 16px; }
+.moves button { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04); font-size: 13px; font-weight: 600; color: #D4D4D8; cursor: pointer; }
+.moves button[aria-pressed="true"] { border-color: var(--pink); color: var(--pink); background: rgba(255,79,146,.1); }
+.moves button:disabled { opacity: .45; cursor: default; }
+.done-line { margin-top: 16px; font-size: 15px; color: var(--fg); min-height: 0; }
+.done-line:empty { display: none; }
+.done-line a { color: var(--pink); font-weight: 600; }
+.try-list { list-style: none; display: grid; gap: 12px; margin-top: 30px; }
+.try-list li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; color: #D4D4D8; }
+.try-list li::before { content: "✓"; color: var(--pink); font-weight: 700; }
+
+/* Split layouts */
+.split { display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: center; }
+.split.rev { grid-template-columns: 340px 1fr; }
+.split .phone { max-width: 340px; }
+.steps { display: grid; gap: 14px; margin: 36px 0 0; counter-reset: s; }
+.step { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+.step::before { counter-increment: s; content: counter(s); width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: var(--pink); background: rgba(255,79,146,.12); border: 1px solid rgba(255,79,146,.35); }
+.step h3 { font-size: 17px; margin-bottom: 2px; }
+.step p { color: var(--muted); font-size: 15px; }
+.checks { list-style: none; display: grid; gap: 10px; margin-top: 30px; }
+.checks li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; color: #D4D4D8; }
+.checks li::before { content: "✓"; color: var(--pink); font-weight: 700; }
+
+/* Durations */
+.durations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+.dur { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px 22px 26px; display: flex; flex-direction: column; }
+.dur .nm { font-size: 14px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.dur .min { font-size: 52px; font-weight: 900; letter-spacing: -.03em; line-height: 1; margin: 12px 0 4px; }
+.dur .min small { font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
+.dur .meta { font-size: 15px; color: #D4D4D8; }
+.dur .fits { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.dashes { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 18px; }
+.dashes i { width: 5px; height: 16px; border-radius: 2px; background: var(--pink); }
+.dashes i:nth-child(even) { background: #E9E9EE; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 14px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 5px; height: 14px; border-radius: 2px; background: var(--c); margin-right: 9px; vertical-align: -2px; }
+
+/* Coach transcript */
+.coach { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.transcript { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 14px 8px; }
+.transcript li { list-style: none; display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: baseline; padding: 11px 18px; border-radius: 14px; }
+.transcript time { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.transcript q { quotes: "“" "”"; font-size: 17px; font-weight: 600; }
+.transcript small { display: block; color: var(--muted); font-size: 13px; font-weight: 400; margin-top: 2px; }
+.transcript li.gap { display: block; padding: 0 18px; color: #4A4A50; font-size: 18px; letter-spacing: .3em; line-height: 1.2; }
+.transcript .music { margin: 8px 10px 0; border: 1px dashed rgba(255,255,255,.14); color: var(--muted); font-size: 14px; grid-template-columns: 1fr; }
+
+/* Library chips */
+.groups { display: grid; gap: 26px; margin-top: 34px; }
+.group h3 { font-size: 14px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.group h3 b { color: var(--pink); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font-size: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid var(--line); color: #D4D4D8; }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 34px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+.stat b { display: block; font-size: 30px; font-weight: 900; letter-spacing: -.02em; line-height: 1.1; }
+.stat span { color: var(--muted); font-size: 14px; }
+
+/* Screens strip */
+.strip { display: flex; gap: 22px; overflow-x: auto; padding: 50px 24px 26px; scroll-snap-type: x mandatory; scroll-padding-inline: max(24px, calc((100vw - 1160px) / 2 + 24px)); scrollbar-width: thin; scrollbar-color: #333 transparent; }
+.strip::before, .strip::after { content: ""; flex: 0 0 max(0px, calc((100vw - 1160px) / 2)); }
+.strip figure { flex: 0 0 250px; scroll-snap-align: start; }
+.strip .phone { padding: 7px; border-radius: 32px; box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08); }
+.strip .phone img { border-radius: 26px; }
+.strip figcaption { margin-top: 14px; font-size: 14px; color: var(--muted); text-align: center; }
+.strip figcaption b { color: var(--fg); font-weight: 600; display: block; }
+
+/* Privacy */
+.privacy-box { background: linear-gradient(140deg, #17171C, #0F0F12); border: 1px solid var(--line); border-radius: 28px; padding: clamp(28px, 5vw, 56px); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.privacy-box h2 { margin-top: 12px; }
+.privacy-box p { color: var(--muted); font-size: 17px; }
+.nos { list-style: none; display: grid; gap: 12px; align-content: center; }
+.nos li { display: flex; gap: 14px; align-items: center; font-size: 18px; font-weight: 600; padding: 14px 18px; border-radius: 16px; background: rgba(255,255,255,.03); border: 1px solid var(--line); }
+.nos li span { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,79,146,.12); color: var(--pink); font-size: 14px; flex: none; }
+
+/* FAQ */
+.faq { margin-top: 44px; border-top: 1px solid var(--line); }
+details { border-bottom: 1px solid var(--line); }
+summary { list-style: none; cursor: pointer; padding: 22px 4px; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; gap: 20px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--pink); font-size: 24px; line-height: 1; font-weight: 400; transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding: 0 4px 24px; color: var(--muted); max-width: 46em; font-size: 16px; }
+details p a { color: var(--pink); }
+
+/* Final CTA */
+.get { text-align: center; }
+.get h2 { max-width: 14em; margin: 14px auto 18px; }
+.get .intro { margin: 0 auto; }
+.get .cta-row { justify-content: center; }
+.note { font-size: 13px; color: var(--muted); margin-top: 18px; }
+
+/* Footer */
+footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+footer .fl { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+footer a { text-decoration: none; color: #D4D4D8; }
+footer a:hover { color: var(--pink); }
+
+/* Reveal */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s, transform .6s; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 1060px) {
+  .excuses, .durations { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .links { display: none; }
+  section { padding: 84px 0; }
+  .hero { padding: 48px 0 72px; }
+  .hero .wrap, .split, .split.rev, .try, .coach, .privacy-box { grid-template-columns: 1fr; gap: 44px; }
+  .split .phone { margin: 0 auto; width: 100%; max-width: 300px; }
+  .split.rev .phone { order: 2; }
+  .trainer { max-width: 440px; width: 100%; margin: 0 auto; }
+  .duo { height: 560px; max-width: 420px; width: 100%; margin: 0 auto; }
+  .duo .phone { width: 250px; }
+  .badge-2 { top: 250px; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 16px; }
+  .strip { padding-left: 16px; padding-right: 16px; scroll-padding-inline: 16px; }
+  .strip figure { flex-basis: 210px; }
+  .excuses, .durations, .stats { grid-template-columns: 1fr; }
+  .duo { height: 470px; }
+  .duo .phone { width: 205px; border-radius: 30px; padding: 7px; }
+  .duo .phone img { border-radius: 24px; }
+  .duo .front { left: 0; top: 46px; }
+  .badge { padding: 9px 12px; font-size: 13px; }
+  .badge b { font-size: 17px; }
+  .badge-1 { left: auto; right: 0; bottom: 30px; }
+  .badge-2 { right: auto; left: 0; top: 4px; }
+  .btn { width: 100%; justify-content: center; }
+  nav .btn, .tr-ctrl .btn { width: auto; }
+  .trainer { padding: 22px 18px; }
+  .center-num { font-size: 84px; }
+  .transcript li { grid-template-columns: 48px 1fr; padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/icon.png" alt="" width="30" height="30">HWH Workout</a>
+    <div class="links">
+      <a href="#try">Try it</a>
+      <a href="#how">How it works</a>
+      <a href="#coach">The coach</a>
+      <a href="#screens">Screens</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-primary" href="#get">Get the app</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="label"><b>HWH Workout</b> · Bodyweight training for iPhone</p>
+      <h1>Stop planning workouts. <em>Start one.</em></h1>
+      <p class="lead">Pick <strong>6, 12, 18 or 30 minutes</strong>. HWH Workout picks the moves, shows each one, counts you in and talks you through it. No gym, no gear, no account. <strong>Just your floor.</strong></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" data-store href="#get"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.01.61-2.66 1.37-.58.67-1.1 1.76-.96 2.8 1.01.08 2.05-.52 2.68-1.28z"/></svg><span>Coming soon on the App Store</span></a>
+        <a class="btn btn-ghost" href="#try">Try a move here ↓</a>
+      </div>
+      <div class="ticks"><span>No equipment</span><span>No account</span><span>Works offline</span><span>Voice coach</span></div>
+    </div>
+    <div class="duo" aria-label="HWH Workout on iPhone">
+      <div class="phone back"><img src="img/screens/03_dashboard.jpg" alt="Dashboard: a 5-day streak, four ready workouts and lifetime reps per exercise" width="640" height="1390"></div>
+      <div class="phone front"><img src="img/screens/01_workout.jpg" alt="Workout in progress: jumping jacks inside a pink ring, 10 seconds left, 11 reps" width="640" height="1390"></div>
+      <div class="badge badge-1"><span class="dot"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c.6 3.4-1.6 5.3-3 7.2C7.6 11 7 12.4 7 14a5 5 0 0 0 10 0c0-1.4-.5-2.7-1.3-3.8-.3 1.2-1 2.1-2 2.6.4-3.7-.6-7.5-1.7-10.8z"/></svg></span><div><b>5-day streak</b><small>keep it alive tomorrow</small></div></div>
+      <div class="badge badge-2"><div><b>1,320</b><small>high knees, lifetime</small></div></div>
+    </div>
+  </div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="label"><b>01</b> / Why you skip</p>
+      <h2>Every reason to skip,<br>already handled.</h2>
+      <p class="intro">Most workouts die before they start: you'd have to decide what to do, for how long, and how hard. HWH Workout decides all of it. You press start.</p>
+    </div>
+    <div class="excuses reveal">
+      <div class="ex"><p class="no">“No time.”</p><h3>Six minutes is a workout.</h3><p>Quick is 20 moves of 15 seconds. Shorter than the time you spend choosing a show.</p></div>
+      <div class="ex"><p class="no">“No gym.”</p><h3>32 moves, zero equipment.</h3><p>Your floor is enough. A chair for tricep dips and a wall for wall sits, and that's the whole kit.</p></div>
+      <div class="ex"><p class="no">“No idea what to do.”</p><h3>Every move, shown and named.</h3><p>An animated figure demonstrates it, the coach says its name and a one-line form cue. A new order every time.</p></div>
+      <div class="ex"><p class="no">“No motivation.”</p><h3>A coach, a streak, a counter.</h3><p>It counts you in, pushes you through the last seconds, and adds every rep to a lifetime total.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="try" style="padding-top: 40px">
+  <div class="wrap try">
+    <div class="reveal">
+      <p class="label"><b>02</b> / Try it</p>
+      <h2>Stand up. One move.<br>Eighteen seconds.</h2>
+      <p class="intro">This is exactly how every move runs in the app: three seconds to get ready, then the ring fills while you work. Turn your sound on and press start.</p>
+      <ul class="try-list">
+        <li>The same figure and the same cues as in the app.</li>
+        <li>The coach speaks through your browser's voice; the app can use Apple's premium voices.</li>
+        <li>In the app, the next move follows on its own, 20 times in a row for Quick.</li>
+      </ul>
+    </div>
+    <div class="trainer reveal" id="trainer">
+      <div class="tr-top" aria-live="polite"><span id="d-top">TRY IT</span></div>
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="track" cx="100" cy="100" r="92"/><circle class="prog" id="d-prog" cx="100" cy="100" r="92" pathLength="100" stroke-dasharray="0 100" style="opacity:0" transform="rotate(-90 100 100)"/></svg>
+        <svg class="fig" id="d-fig" role="img" aria-label="Animated stick figure"></svg>
+        <div class="center-num" id="d-num" aria-hidden="true">3</div>
+      </div>
+      <h3 id="d-name">Jumping Jacks</h3>
+      <p class="reps" id="d-reps">11 REPS</p>
+      <p class="cue" id="d-cue">Arms all the way up, and land softly.</p>
+      <div class="tr-ctrl">
+        <button class="btn btn-primary" id="d-start" type="button">▶ Start</button>
+        <button class="btn btn-ghost" id="d-voice" type="button" aria-pressed="true">Voice: on</button>
+      </div>
+      <div class="moves" role="group" aria-label="Pick a move">
+        <button type="button" data-move="jj" aria-pressed="true">Jumping Jacks</button>
+        <button type="button" data-move="sq" aria-pressed="false">Squats</button>
+      </div>
+      <p class="done-line" id="d-done"></p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap split rev">
+    <div class="phone reveal"><img src="img/screens/02_countdown.jpg" alt="Get ready: a 2-second countdown in the ring before jumping jacks" width="640" height="1390" loading="lazy"></div>
+    <div class="reveal">
+      <p class="label"><b>03</b> / How it works</p>
+      <h2>One tap,<br>then just follow.</h2>
+      <p class="intro">No set-up, no rest timer to manage, no list to read. The screen and the voice tell you everything, one move at a time.</p>
+      <div class="steps">
+        <div class="step"><div><h3>Pick a length</h3><p>Quick, Everyday, Tough or Extreme. Or one you built yourself.</p></div></div>
+        <div class="step"><div><h3>Get ready</h3><p>Three seconds: the move's name, its animation, “two, one, go”.</p></div></div>
+        <div class="step"><div><h3>Move for 15 seconds</h3><p>The ring fills, your rep target sits under the name, a form cue below it. Pause or skip anytime.</p></div></div>
+        <div class="step"><div><h3>See what you did</h3><p>Every move and every rep counted, added to your history and your streak.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workouts" style="padding-top: 40px">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="label"><b>04</b> / Ready on day one</p>
+      <h2>Four workouts.<br>Zero set-up.</h2>
+      <p class="intro">Each dash is one move. They come in a new order every time, cardio and strength taking turns, so your heart rate climbs and your legs get a break.</p>
+    </div>
+    <div class="durations reveal">
+      <div class="dur"><span class="nm">Quick</span><div class="min">6<small>min</small></div><span class="meta">20 moves · Easy</span><span class="fits">Before your shower.</span><div class="dashes" data-n="20"></div></div>
+      <div class="dur"><span class="nm">Everyday</span><div class="min">12<small>min</small></div><span class="meta">40 moves · Normal</span><span class="fits">Instead of scrolling.</span><div class="dashes" data-n="40"></div></div>
+      <div class="dur"><span class="nm">Tough</span><div class="min">18<small>min</small></div><span class="meta">60 moves · Hard</span><span class="fits">A proper session.</span><div class="dashes" data-n="60"></div></div>
+      <div class="dur"><span class="nm">Extreme</span><div class="min">30<small>min</small></div><span class="meta">100 moves · Max</span><span class="fits">When you want to be wrecked.</span><div class="dashes" data-n="100"></div></div>
+    </div>
+    <div class="legend reveal"><span style="--c: var(--pink)">Cardio</span><span style="--c: #E9E9EE">Strength</span><span style="--c: transparent">Difficulty sets the rep targets: Easy, Normal, Hard, Max.</span></div>
+  </div>
+</section>
+
+<section id="coach">
+  <div class="wrap coach">
+    <div class="reveal">
+      <p class="label"><b>05</b> / The coach</p>
+      <h2>Eyes closed,<br>you'd still know what's next.</h2>
+      <p class="intro">A voice coach runs the whole workout, so you never have to look at your phone on the floor.</p>
+      <ul class="checks">
+        <li>Says each move's name, then “two, one, go”.</li>
+        <li>Gives a quick form cue the first time a move comes up, not every time.</li>
+        <li>Pushes you through the last seconds every few moves.</li>
+        <li>Your music keeps playing, just lowered while the coach speaks. Spotify, podcasts, anything.</li>
+        <li>Or pick a playlist from your music library: it starts and pauses with the workout.</li>
+        <li>Prefer silence? Turn the voice off. The cues stay written under each move.</li>
+      </ul>
+    </div>
+    <ol class="transcript reveal" aria-label="What the coach says during a Quick workout">
+      <li><time>0:00</time><q>Jumping jacks.</q></li>
+      <li><time>0:01</time><q>Two.</q></li>
+      <li><time>0:02</time><q>One.</q></li>
+      <li><time>0:03</time><q>Go!</q></li>
+      <li><time>0:04</time><div><q>Arms all the way up, and land softly.</q><small>Form cue, the first time only</small></div></li>
+      <li class="gap" aria-hidden="true">· · ·</li>
+      <li><time>1:25</time><div><q>Keep going!</q><small>Every fifth move, five seconds before the end</small></div></li>
+      <li class="gap" aria-hidden="true">· · ·</li>
+      <li><time>6:00</time><q>Workout complete. Nice job!</q></li>
+      <li class="music">♪ &nbsp;Your music underneath, the whole time.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="custom">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="label"><b>06</b> / Make it yours</p>
+      <h2>Your moves,<br>your length.</h2>
+      <p class="intro">Hate burpees? Love planks? Build your own workout in a minute and it sits on the home screen next to the four ready ones.</p>
+      <ul class="checks">
+        <li>Pick the moves you want from the library.</li>
+        <li>Any length from 3 to 60 minutes.</li>
+        <li>Easy, Normal, Hard or Max: the rep targets follow.</li>
+        <li>Shuffle each time, or keep your order.</li>
+        <li>Five accent colours for the whole app.</li>
+      </ul>
+    </div>
+    <div class="phone reveal"><img src="img/screens/04_editor.jpg" alt="Edit Workout: duration, difficulty, shuffle each time, and the exercise list" width="640" height="1390" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="library" style="padding-top: 40px">
+  <div class="wrap split rev">
+    <div class="phone reveal"><img src="img/screens/06_library.jpg" alt="Exercise library: cardio exercises with the muscles each one works" width="640" height="1390" loading="lazy"></div>
+    <div class="reveal">
+      <p class="label"><b>07</b> / The library</p>
+      <h2>32 moves.<br>Each one animated.</h2>
+      <p class="intro">Every move has its own animated figure, the muscles it works and a form cue. Open the library anytime to look one up.</p>
+      <div class="groups">
+        <div class="group"><h3>Cardio <b>9</b></h3><div class="chips"><span>Burpees</span><span>Butt Kicks</span><span>Front Kicks</span><span>High Knees</span><span>Jump Squats</span><span>Jumping Jacks</span><span>Mountain Climbers</span><span>Skaters</span><span>Squat Jacks</span></div></div>
+        <div class="group"><h3>Strength <b>19</b></h3><div class="chips"><span>Bicycle Crunches</span><span>Bird Dogs</span><span>Crunches</span><span>Donkey Kicks</span><span>Flutter Kicks</span><span>Glute Bridges</span><span>Hip Hinges</span><span>Knee Pull-Ins</span><span>Leg Raises</span><span>Lunges</span><span>Push Ups</span><span>Rotation Push Ups</span><span>Shoulder Taps</span><span>Side Hip Raises</span><span>Side Lunges</span><span>Squats</span><span>Superman</span><span>Tricep Dips</span><span>V-Ups</span></div></div>
+        <div class="group"><h3>Holds <b>4</b></h3><div class="chips"><span>Plank</span><span>Extended Plank</span><span>Side Plank</span><span>Wall Sit</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="progress">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="label"><b>08</b> / Progress</p>
+      <h2>Watch the numbers<br>pile up.</h2>
+      <p class="intro">Nothing keeps you coming back like a number you don't want to break. HWH Workout keeps several.</p>
+      <div class="stats">
+        <div class="stat"><b>Streak</b><span>Days in a row with a workout.</span></div>
+        <div class="stat"><b>This week</b><span>How many of the 7 days you moved.</span></div>
+        <div class="stat"><b>Lifetime reps</b><span>Per move: 990 jumping jacks, then 1,000.</span></div>
+        <div class="stat"><b>History</b><span>A calendar of every workout, with days, minutes and reps.</span></div>
+      </div>
+    </div>
+    <div class="phone reveal"><img src="img/screens/05_history.jpg" alt="Workout history: a monthly calendar and totals for days, workouts, minutes and reps" width="640" height="1390" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="screens" style="padding: 40px 0 100px">
+  <div class="wrap reveal">
+    <p class="label"><b>09</b> / Screens</p>
+    <h2>The whole app.</h2>
+    <p class="intro">Real screens, nothing mocked up. Swipe through.</p>
+  </div>
+  <div class="strip reveal">
+    <figure><div class="phone"><img src="img/screens/03_dashboard.jpg" alt="Dashboard" width="640" height="1390" loading="lazy"></div><figcaption><b>Home</b>Streak, workouts, lifetime reps</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/07_intro.jpg" alt="Workout intro" width="640" height="1390" loading="lazy"></div><figcaption><b>Intro</b>A preview of what's coming</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/02_countdown.jpg" alt="Get ready countdown" width="640" height="1390" loading="lazy"></div><figcaption><b>Get ready</b>Three seconds to get in place</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/01_workout.jpg" alt="Workout in progress" width="640" height="1390" loading="lazy"></div><figcaption><b>Workout</b>Ring, reps and form cue</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/04_editor.jpg" alt="Edit workout" width="640" height="1390" loading="lazy"></div><figcaption><b>Your workout</b>Length, difficulty, moves</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/06_library.jpg" alt="Exercise library" width="640" height="1390" loading="lazy"></div><figcaption><b>Library</b>32 animated moves</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/05_history.jpg" alt="Workout history" width="640" height="1390" loading="lazy"></div><figcaption><b>History</b>Every workout, on a calendar</figcaption></figure>
+    <figure><div class="phone"><img src="img/screens/08_settings.jpg" alt="Settings" width="640" height="1390" loading="lazy"></div><figcaption><b>Settings</b>Coach, music, colours, data</figcaption></figure>
+  </div>
+</section>
+
+<section id="privacy" style="padding-top: 40px">
+  <div class="wrap">
+    <div class="privacy-box reveal">
+      <div>
+        <p class="label"><b>10</b> / Privacy</p>
+        <h2>Your workouts stay<br>on your iPhone.</h2>
+        <p>There's no account to create and nothing to sync: your history lives on your iPhone, and the app works in airplane mode. Want it elsewhere? Export it as a CSV, open it in Numbers or Excel, or import it on another iPhone. This page doesn't track you either.</p>
+      </div>
+      <ul class="nos">
+        <li><span>✕</span>No account, no sign-up.</li>
+        <li><span>✕</span>No ads.</li>
+        <li><span>✕</span>No tracking, no analytics.</li>
+        <li><span>✕</span>No internet needed.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap reveal">
+    <p class="label"><b>11</b> / FAQ</p>
+    <h2>Questions.</h2>
+    <div class="faq">
+      <details><summary>Do I need any equipment?</summary><p>No. Every move uses your body weight. Tricep dips want a chair or a step and wall sits want a wall; if you don't have them, take those moves out of your workout.</p></details>
+      <details><summary>I haven't trained in years. Is it for me?</summary><p>Yes. Start with Quick: 6 minutes on Easy, with lower rep targets. Every move is shown and explained, and you can pause or skip one anytime. When it feels easy, try Everyday, or raise the difficulty.</p></details>
+      <details><summary>How long is each move?</summary><p>15 seconds of work after a 3-second preview. Ready sooner? Tap “Start now”. Want to skip one? There's a button for that too.</p></details>
+      <details><summary>Can I listen to my own music?</summary><p>Yes. Start Spotify, Apple Music or a podcast before the workout and it keeps playing, lowered while the coach speaks. Or let the app play a playlist from your music library.</p></details>
+      <details><summary>Do I need an account or an internet connection?</summary><p>Neither. Everything runs and stays on your iPhone.</p></details>
+      <details><summary>Which devices does it run on?</summary><p>iPhone, with iOS 17 or later.</p></details>
+      <details><summary>When can I get it?</summary><p>HWH Workout is coming to the App Store very soon. <a href="mailto:artusbe@gmail.com?subject=Tell%20me%20when%20HWH%20Workout%20launches">Send a one-line email</a> and you'll hear back on launch day.</p></details>
+      <details><summary>I need help.</summary><p>Write to <a href="mailto:artusbe@gmail.com?subject=HWH%20Workout%20support">artusbe@gmail.com</a>. A real person answers.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="get" id="get">
+  <div class="wrap reveal">
+    <p class="label"><b>12</b> / Get HWH Workout</p>
+    <h2>Your first six minutes start now.</h2>
+    <p class="intro">No plan to write, no gear to buy, no account to make. Pick a length and follow the coach.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" data-store href="mailto:artusbe@gmail.com?subject=Tell%20me%20when%20HWH%20Workout%20launches"><span>Notify me at launch</span></a>
+      <a class="btn btn-ghost" href="#try">Try a move first</a>
+    </div>
+    <p class="note" id="soon">Coming soon on the App Store for iPhone.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong style="color:var(--fg)">HWH Workout</strong> by Rook Labs · © 2026</div>
+    <div class="fl">
+      <a href="../hwh/">HWH: Health, Wealth, Happiness</a>
+      <a href="mailto:artusbe@gmail.com?subject=HWH%20Workout%20support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Set this once HWH Workout is live (App Store Connect › App Information › Apple ID),
+// e.g. "https://apps.apple.com/app/id1234567890": every store button switches over.
+const APP_STORE_URL = "";
+
+if (APP_STORE_URL) {
+  document.querySelectorAll("[data-store]").forEach(a => {
+    a.href = APP_STORE_URL;
+    (a.querySelector("span") || a).textContent = "Download on the App Store";
+  });
+  document.getElementById("soon").remove();
+}
+
+// One dash per move; cardio and strength alternate, like the shuffled workouts.
+document.querySelectorAll(".dashes").forEach(el => {
+  el.innerHTML = "<i></i>".repeat(+el.dataset.n);
+});
+
+// ——— Stick figure: the app's own skeleton (FigureMetrics) and poses (FigureLibrary) ———
+const M = { torso: 26, neck: 10, headR: 7, upperArm: 14, forearm: 13, thigh: 19, shin: 19, limbW: 6.5, torsoW: 8.5, groundY: 94, anchorX: 50 };
+const pose = o => Object.assign({ torso: -90, head: -90, backArm: [95, 92], frontArm: [85, 88], backLeg: [92, 92], frontLeg: [88, 88], lift: 0, shift: 0 }, o);
+const MOVES = {
+  jj: { name: "Jumping Jacks", reps: 11, cue: "Arms all the way up, and land softly.", side: false, anchor: "hip", cycle: 1.0,
+        keys: [pose({ backArm: [110, 101], frontArm: [70, 79], backLeg: [94, 92], frontLeg: [86, 88] }),
+               pose({ backArm: [-140, -112], frontArm: [-40, -68], backLeg: [113, 110], frontLeg: [67, 70] })] },
+  sq: { name: "Squats", reps: 7, cue: "Sit back, chest up, knees out.", side: true, anchor: "frontFoot", cycle: 2.0,
+        keys: [pose({}),
+               pose({ torso: -52, head: -70, backArm: [-2, -2], frontArm: [2, 2], backLeg: [12, 112], frontLeg: [8, 110] })] },
+};
+
+const step = (p, deg, len) => { const r = deg * Math.PI / 180; return [p[0] + Math.cos(r) * len, p[1] + Math.sin(r) * len]; };
+function lerpAngle(x, y, t) { let d = (y - x) % 360; if (d > 180) d -= 360; if (d < -180) d += 360; return x + d * t; }
+function poseAt(move, phase) {
+  const k = move.keys, n = k.length, pos = phase * n, i = Math.floor(pos) % n, t = pos - Math.floor(pos);
+  const e = t * t * (3 - 2 * t), a = k[i], b = k[(i + 1) % n];
+  const limb = (x, y) => [lerpAngle(x[0], y[0], e), lerpAngle(x[1], y[1], e)];
+  return { torso: lerpAngle(a.torso, b.torso, e), head: lerpAngle(a.head, b.head, e),
+           backArm: limb(a.backArm, b.backArm), frontArm: limb(a.frontArm, b.frontArm),
+           backLeg: limb(a.backLeg, b.backLeg), frontLeg: limb(a.frontLeg, b.frontLeg),
+           lift: a.lift + (b.lift - a.lift) * e, shift: a.shift + (b.shift - a.shift) * e };
+}
+function bounds(f) {
+  const b = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+  const add = (p, r) => { b.minX = Math.min(b.minX, p[0] - r); b.minY = Math.min(b.minY, p[1] - r); b.maxX = Math.max(b.maxX, p[0] + r); b.maxY = Math.max(b.maxY, p[1] + r); };
+  add(f.head, M.headR); add(f.hip, M.torsoW / 2); add(f.neck, M.torsoW / 2);
+  ["bE", "bH", "fE", "fH", "bK", "bF", "fK", "fF"].forEach(k => add(f[k], M.limbW / 2));
+  return b;
+}
+// Builds the skeleton, plants it on the ground and pins the anchor, like FigureFrame.
+function frameOf(P, anchor) {
+  const hip = [0, 0], neck = step(hip, P.torso, M.torso);
+  const f = { hip, neck, head: step(neck, P.head, M.neck),
+    bE: step(neck, P.backArm[0], M.upperArm), fE: step(neck, P.frontArm[0], M.upperArm),
+    bK: step(hip, P.backLeg[0], M.thigh), fK: step(hip, P.frontLeg[0], M.thigh) };
+  f.bH = step(f.bE, P.backArm[1], M.forearm); f.fH = step(f.fE, P.frontArm[1], M.forearm);
+  f.bF = step(f.bK, P.backLeg[1], M.shin); f.fF = step(f.fK, P.frontLeg[1], M.shin);
+  const b = bounds(f), pin = { hip: f.hip, frontFoot: f.fF }[anchor];
+  const dx = M.anchorX - pin[0] + P.shift, dy = M.groundY - b.maxY - P.lift;
+  for (const k in f) f[k] = [f[k][0] + dx, f[k][1] + dy];
+  return f;
+}
+
+const svgNS = "http://www.w3.org/2000/svg";
+const fig = document.getElementById("d-fig");
+const parts = {};
+function el(tag, attrs) { const e = document.createElementNS(svgNS, tag); for (const a in attrs) e.setAttribute(a, attrs[a]); fig.appendChild(e); return e; }
+function buildFigure(move) {
+  fig.innerHTML = "";
+  const back = move.side ? "var(--limb-back)" : "#FAFAFA";
+  const limb = c => el("polyline", { stroke: c, "stroke-width": M.limbW });
+  parts.bArm = limb(back); parts.bLeg = limb(back);
+  parts.torso = el("polyline", { stroke: "#FAFAFA", "stroke-width": M.torsoW });
+  parts.head = el("circle", { r: M.headR, fill: "#FAFAFA" });
+  parts.fLeg = limb("#FAFAFA"); parts.fArm = limb("#FAFAFA");
+  // Framing stays still while the figure moves: union of every frame, squared and centred.
+  const u = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+  for (let i = 0; i < 96; i++) {
+    const b = bounds(frameOf(poseAt(move, i / 96), move.anchor));
+    u.minX = Math.min(u.minX, b.minX); u.minY = Math.min(u.minY, b.minY); u.maxX = Math.max(u.maxX, b.maxX); u.maxY = Math.max(u.maxY, b.maxY);
+  }
+  const s = Math.max(u.maxX - u.minX, u.maxY - u.minY), cx = (u.minX + u.maxX) / 2, cy = (u.minY + u.maxY) / 2;
+  fig.setAttribute("viewBox", `${cx - s / 2} ${cy - s / 2} ${s} ${s}`);
+}
+function drawFigure(move, t) {
+  const f = frameOf(poseAt(move, (t / move.cycle) % 1), move.anchor);
+  const pts = (...ps) => ps.map(p => p[0].toFixed(2) + "," + p[1].toFixed(2)).join(" ");
+  parts.bArm.setAttribute("points", pts(f.neck, f.bE, f.bH));
+  parts.bLeg.setAttribute("points", pts(f.hip, f.bK, f.bF));
+  parts.torso.setAttribute("points", pts(f.hip, f.neck, f.head));
+  parts.head.setAttribute("cx", f.head[0].toFixed(2)); parts.head.setAttribute("cy", f.head[1].toFixed(2));
+  parts.fLeg.setAttribute("points", pts(f.hip, f.fK, f.fF));
+  parts.fArm.setAttribute("points", pts(f.neck, f.fE, f.fH));
+}
+
+// ——— The demo: 3 s preview, 15 s of work, the coach's lines at the app's moments ———
+const PREVIEW = 3, WORK = 15;
+const $ = id => document.getElementById(id);
+const trainer = $("trainer"), topEl = $("d-top"), prog = $("d-prog"), num = $("d-num");
+let move = MOVES.jj, startedAt = null, said = new Set(), voiceOn = true;
+const t0 = performance.now();
+const stillIdle = matchMedia("(prefers-reduced-motion: reduce)"); // the figure only moves during the demo
+
+function pickVoice() {
+  const vs = speechSynthesis.getVoices().filter(v => /^en(-|_|$)/i.test(v.lang));
+  return vs.find(v => /premium|enhanced/i.test(v.name)) || vs.find(v => /Ava|Zoe|Evan|Samantha|Google US English/i.test(v.name)) || vs[0];
+}
+function say(text, interrupt) {
+  if (!voiceOn || !("speechSynthesis" in window)) return;
+  if (interrupt) speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice(); if (v) u.voice = v;
+  u.lang = v ? v.lang : "en-US"; u.rate = 1.02;
+  speechSynthesis.speak(u);
+}
+function once(key, fn) { if (!said.has(key)) { said.add(key); fn(); } }
+function setTop(text, big) { topEl.textContent = text; topEl.className = big ? "big" : ""; }
+function setRing(fraction) {
+  prog.setAttribute("stroke-dasharray", (fraction * 100).toFixed(2) + " 100");
+  prog.style.opacity = fraction > 0 ? 1 : 0; // the round cap would show a dot at 0
+}
+
+function selectMove(id) {
+  move = MOVES[id];
+  document.querySelectorAll(".moves button").forEach(b => b.setAttribute("aria-pressed", b.dataset.move === id));
+  $("d-name").textContent = move.name;
+  $("d-reps").textContent = move.reps + " REPS";
+  $("d-cue").textContent = move.cue;
+  buildFigure(move);
+  drawFigure(move, move.cycle / 2); // the icon pose, until the first frame
+}
+function reset(label) {
+  startedAt = null;
+  trainer.classList.remove("preview");
+  setTop(label, false); setRing(0);
+  $("d-start").textContent = "▶ Start";
+  document.querySelectorAll(".moves button").forEach(b => b.disabled = false);
+}
+function start() {
+  startedAt = performance.now(); said = new Set();
+  $("d-done").textContent = "";
+  $("d-start").textContent = "■ Stop";
+  document.querySelectorAll(".moves button").forEach(b => b.disabled = true);
+  say(move.name, true);
+}
+function finish() {
+  reset("NICE JOB");
+  setRing(1);
+  drawFigure(move, move.cycle / 2);
+  say("Workout complete. Nice job!", true);
+  $("d-done").innerHTML = `That was 1 move. Quick is 20 of them in 6 minutes, picked and ordered for you. <a href="#get">Get the app →</a>`;
+}
+
+function tick(now) {
+  if (startedAt !== null) {
+    const t = Math.max(0, (now - startedAt) / 1000); // a frame can be stamped just before the click
+    if (t < PREVIEW) {
+      trainer.classList.add("preview");
+      const left = Math.ceil(PREVIEW - t);
+      setTop("GET READY", false); num.textContent = left; setRing(t / PREVIEW);
+      if (left === 2) once("two", () => say("Two"));
+      if (left === 1) once("one", () => say("One"));
+    } else if (t < PREVIEW + WORK) {
+      trainer.classList.remove("preview");
+      const w = t - PREVIEW;
+      once("go", () => say("Go!", true));
+      if (w >= 1.5) once("cue", () => say(move.cue));
+      if (WORK - w <= 5) once("push", () => say("Almost there!"));
+      setTop(String(Math.ceil(WORK - w)), true); setRing(w / WORK);
+    } else {
+      finish();
+    }
+  }
+  if (startedAt !== null || !stillIdle.matches) drawFigure(move, (now - t0) / 1000);
+  requestAnimationFrame(tick);
+}
+
+$("d-start").addEventListener("click", () => {
+  if (startedAt === null) start();
+  else { if ("speechSynthesis" in window) speechSynthesis.cancel(); reset("TRY IT"); }
+});
+$("d-voice").addEventListener("click", e => {
+  voiceOn = !voiceOn;
+  e.currentTarget.setAttribute("aria-pressed", voiceOn);
+  e.currentTarget.textContent = "Voice: " + (voiceOn ? "on" : "off");
+  if (!voiceOn && "speechSynthesis" in window) speechSynthesis.cancel();
+});
+document.querySelectorAll(".moves button").forEach(b => b.addEventListener("click", () => selectMove(b.dataset.move)));
+if (!("speechSynthesis" in window)) $("d-voice").hidden = true;
+else speechSynthesis.getVoices();
+
+selectMove("jj");
+requestAnimationFrame(tick);
+
+// Reveal on scroll.
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+}), { threshold: .12 });
+document.querySelectorAll(".reveal").forEach(n => io.observe(n));
+</script>
+</body>
+</html>
