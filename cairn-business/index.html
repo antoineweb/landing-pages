@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cairn — Le design des institutions européennes, pour votre entreprise</title>
+<meta name="description" content="Vous travaillez avec des clients exigeants. Votre site, lui, date de dix ans. Refontes à prix fixe par le designer qui a livré pour la Commission européenne, le Conseil de l'UE, Infrabel et Fluxys. Maquette gratuite.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cairn — Le design des institutions européennes, pour votre entreprise">
+<meta property="og:description" content="Refonte de site à prix fixe. 990€ la refonte, 2 900€ le site complet. Livré en 5 jours sur Vercel.">
+<meta property="og:url" content="https://landing-pages-rose-seven.vercel.app/cairn-business/">
+<meta name="theme-color" content="#15151A">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --ink: #15151A;
+  --paper: #F4F2EC;
+  --paper-2: #EDEAE1;
+  --line: rgba(21,21,26,.12);
+  --line-dark: rgba(244,242,236,.14);
+  --graphite: #5B5B66;
+  --accent: #1E2A78;
+  --live: #3D5BFF;
+  --gold: #B08A3E;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Space Grotesk", -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--paper); font-family: var(--sans); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+.serif { font-family: var(--serif); font-weight: 400; }
+.lab { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ---------- nav ---------- */
+nav { position: sticky; top: 0; z-index: 20; background: rgba(21,21,26,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-dark); }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 62px; }
+.logo { font-family: var(--serif); font-size: 22px; text-decoration: none; letter-spacing: .02em; }
+.logo b { color: var(--gold); font-weight: 400; }
+nav .links { display: flex; gap: 24px; font-size: 13px; }
+nav .links a { text-decoration: none; color: rgba(244,242,236,.65); transition: color .15s; }
+nav .links a:hover { color: var(--paper); }
+
+/* ---------- buttons ---------- */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 4px; font: 600 14px/1 var(--sans); letter-spacing: .04em; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform .15s, background .15s, border-color .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn-gold { background: var(--gold); color: var(--ink); }
+.btn-gold:hover { background: #C79E52; }
+.btn-ghost { background: transparent; color: var(--paper); border-color: rgba(244,242,236,.25); }
+.btn-ghost:hover { border-color: rgba(244,242,236,.6); }
+
+/* ---------- hero ---------- */
+.hero { padding: 130px 0 110px; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: -30% -20% auto auto; width: 75%; height: 130%;
+  background: radial-gradient(closest-side, rgba(61,91,255,.14), transparent 70%) 30% 20% / 55% 55% no-repeat,
+              radial-gradient(closest-side, rgba(176,138,62,.16), transparent 70%) 75% 45% / 60% 60% no-repeat;
+  pointer-events: none; }
+.hero .inner { position: relative; max-width: 800px; }
+.hero h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(44px, 6.4vw, 82px); line-height: 1.02; letter-spacing: -.01em; margin: 18px 0 26px; }
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero p.lede { font-size: 19px; color: rgba(244,242,236,.72); max-width: 40em; margin-bottom: 36px; }
+.hero .lede b { color: var(--paper); font-weight: 500; }
+.hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero .note { margin-top: 18px; font-size: 13px; color: rgba(244,242,236,.45); }
+.stats { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 58px; position: relative; }
+.stat .n { font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--paper); }
+.stat .n span { color: var(--gold); }
+.stat .l { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(244,242,236,.5); margin-top: 8px; }
+
+/* ---------- clients band ---------- */
+.clients { border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); padding: 34px 0; }
+.clients .lab { color: rgba(244,242,236,.4); margin-bottom: 18px; }
+.clients .row { display: flex; gap: 42px; flex-wrap: wrap; align-items: center; font-family: var(--serif); font-size: 21px; color: rgba(244,242,236,.62); }
+.clients .row span { white-space: nowrap; }
+.clients .row i { font-style: normal; color: var(--gold); font-family: var(--sans); font-size: 13px; margin-left: 8px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* ---------- problème ---------- */
+.problem { background: var(--paper); color: var(--ink); }
+.problem .lab { color: var(--accent); }
+.problem h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; margin: 14px 0 22px; max-width: 18em; }
+.problem h2 em { font-style: italic; color: var(--accent); }
+.problem .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+.problem .cell { background: var(--paper); padding: 26px 24px; }
+.problem .cell h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.problem .cell p { font-size: 14px; color: var(--graphite); }
+.problem .cell .ic { font-size: 22px; margin-bottom: 14px; display: block; }
+.problem .source { margin-top: 22px; font-size: 13px; color: var(--graphite); }
+.problem .source b { color: var(--ink); font-weight: 600; }
+
+/* ---------- cases ---------- */
+.cases { background: var(--ink); }
+.cases h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; margin: 14px 0 14px; }
+.cases h2 em { font-style: italic; color: var(--gold); }
+.cases .sub { color: rgba(244,242,236,.6); max-width: 42em; font-size: 16px; }
+.cases .rail { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 44px; }
+.case { border: 1px solid var(--line-dark); border-radius: 6px; overflow: hidden; background: rgba(244,242,236,.03); transition: border-color .2s, transform .2s; }
+.case:hover { border-color: rgba(176,138,62,.5); transform: translateY(-3px); }
+.case .top { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px 14px; border-bottom: 1px solid var(--line-dark); }
+.case .tag { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(176,138,62,.35); padding: 5px 10px; border-radius: 99px; }
+.case .metric { font-family: var(--serif); font-size: 24px; color: var(--paper); }
+.case .metric small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,242,236,.45); margin-top: 2px; }
+.case .body { padding: 20px; }
+.case .client { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--live); margin-bottom: 10px; font-weight: 600; }
+.case h3 { font-family: var(--serif); font-weight: 400; font-size: 26px; margin-bottom: 10px; }
+.case p { font-size: 14px; color: rgba(244,242,236,.65); margin-bottom: 16px; }
+.case .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.case .meta span { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(244,242,236,.5); border: 1px solid var(--line-dark); padding: 4px 10px; border-radius: 99px; }
+.cases .pitch { margin-top: 46px; padding: 26px 30px; border-left: 3px solid var(--gold); background: rgba(176,138,62,.06); font-family: var(--serif); font-size: 24px; line-height: 1.35; max-width: 32em; }
+.cases .pitch em { font-style: italic; color: var(--gold); }
+
+/* ---------- offre ---------- */
+.offer { background: var(--paper); color: var(--ink); }
+.offer .lab { color: var(--accent); }
+.offer h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; margin: 14px 0 12px; }
+.offer h2 em { font-style: italic; color: var(--accent); }
+.offer .sub { color: var(--graphite); max-width: 40em; }
+.offer .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 44px; align-items: stretch; }
+.tier { border: 1px solid var(--line); border-radius: 6px; padding: 30px 26px; background: #FBFAF6; display: flex; flex-direction: column; position: relative; }
+.tier.star { border-color: var(--accent); box-shadow: 0 20px 50px rgba(30,42,120,.12); }
+.tier .badge { position: absolute; top: -13px; left: 26px; background: var(--accent); color: var(--paper); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; font-weight: 600; }
+.tier h3 { font-size: 20px; font-weight: 600; }
+.tier .for { font-size: 13px; color: var(--graphite); margin: 6px 0 18px; min-height: 2.6em; }
+.tier .price { font-family: var(--serif); font-size: 46px; line-height: 1; margin-bottom: 4px; }
+.tier .price small { font-family: var(--sans); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--graphite); display: block; margin-top: 8px; }
+.tier ul { list-style: none; margin: 22px 0 26px; flex: 1; }
+.tier li { font-size: 14px; padding: 8px 0 8px 26px; border-bottom: 1px solid var(--line); position: relative; }
+.tier li:last-child { border-bottom: none; }
+.tier li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.tier .btn { justify-content: center; }
+.tier .btn.dark { background: var(--ink); color: var(--paper); }
+.tier .btn.dark:hover { background: #2A2A33; }
+
+/* ---------- process ---------- */
+.process { background: var(--ink); }
+.process h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; margin: 14px 0 40px; }
+.process h2 em { font-style: italic; color: var(--gold); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px; }
+.step .sn { font-family: var(--serif); font-size: 15px; color: var(--gold); border-bottom: 1px solid rgba(176,138,62,.4); display: inline-block; padding-bottom: 8px; margin-bottom: 16px; letter-spacing: .08em; }
+.step h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+.step p { font-size: 14px; color: rgba(244,242,236,.6); }
+
+/* ---------- faq ---------- */
+.faq { background: var(--paper-2); color: var(--ink); }
+.faq .lab { color: var(--accent); }
+.faq h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 4vw, 44px); margin: 14px 0 30px; }
+.faq details { border: 1px solid var(--line); border-radius: 6px; background: #FBFAF6; margin-bottom: 10px; overflow: hidden; }
+.faq summary { padding: 18px 22px; font-weight: 600; font-size: 15px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq summary::after { content: "+"; font-family: var(--serif); font-size: 24px; color: var(--accent); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding: 0 22px 18px; font-size: 14px; color: var(--graphite); max-width: 46em; }
+
+/* ---------- cta final ---------- */
+.final { background: var(--ink); text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+.final::before { content: ""; position: absolute; inset: 0; background: radial-gradient(closest-side, rgba(61,91,255,.12), transparent 70%) 50% 30% / 50% 50% no-repeat; pointer-events: none; }
+.final .inner { position: relative; }
+.final h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 60px); line-height: 1.05; margin: 14px 0 20px; }
+.final h2 em { font-style: italic; color: var(--gold); }
+.final p { color: rgba(244,242,236,.65); max-width: 34em; margin: 0 auto 34px; font-size: 17px; }
+.final .mail { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+.final input { flex: 1; padding: 15px 18px; border-radius: 4px; border: 1px solid rgba(244,242,236,.25); background: rgba(244,242,236,.05); color: var(--paper); font: 400 15px var(--sans); min-width: 0; }
+.final input:focus { outline: none; border-color: var(--gold); }
+.final .ok { display: none; margin-top: 16px; color: var(--gold); font-size: 15px; }
+.final .ok.show { display: block; }
+
+/* ---------- footer ---------- */
+footer { border-top: 1px solid var(--line-dark); padding: 34px 0; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 13px; color: rgba(244,242,236,.45); }
+footer a { color: rgba(244,242,236,.65); text-decoration: none; }
+footer a:hover { color: var(--paper); }
+
+@media (max-width: 720px) {
+  nav .links { display: none; }
+  .stats { gap: 28px; }
+  .hero { padding: 90px 0 70px; }
+  section { padding: 64px 0; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">Cairn<b>.</b> Studio</a>
+    <div class="links">
+      <a href="#cas">Réalisations</a>
+      <a href="#offre">Tarifs</a>
+      <a href="#process">Méthode</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-gold" href="#contact" style="padding: 10px 16px; font-size: 13px;">Maquette gratuite</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="inner">
+      <span class="lab">Sites pour entreprises exigeantes — Genève · Luxembourg · Bruxelles</span>
+      <h1>Le design des institutions européennes, <em>pour votre entreprise.</em></h1>
+      <p class="lede">Vos clients choisissent en <b>3 secondes</b> sur votre site. Pendant ce temps, la Commission européenne m'a confié ses plateformes publiques — et le même niveau de soin peut s'appliquer à votre site, <b>à prix fixe, sans agence</b>.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#contact">Recevoir une maquette gratuite</a>
+        <a class="btn btn-ghost" href="#cas">Voir les réalisations</a>
+      </div>
+      <p class="note">Maquette sans engagement · Réponse sous 24h · Livraison en 5 jours</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">15<span>+</span></div><div class="l">années de design</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">institutions européennes</div></div>
+      <div class="stat"><div class="n">5<span> j</span></div><div class="l">délai de refonte</div></div>
+      <div class="stat"><div class="n">0<span>€</span></div><div class="l">la maquette initiale</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CLIENTS -->
+<div class="clients">
+  <div class="wrap">
+    <span class="lab">Aussi livré pour</span>
+    <div class="row">
+      <span>Commission européenne<i>DG COMM</i></span>
+      <span>Conseil de l'UE</span>
+      <span>Infrabel</span>
+      <span>Fluxys</span>
+      <span>Fujitsu</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLÈME -->
+<section class="problem" id="probleme">
+  <div class="wrap">
+    <span class="lab">Le constat</span>
+    <h2>Votre entreprise fait de l'argent.<br><em>Votre site, lui, fait fuir.</em></h2>
+    <div class="grid">
+      <div class="cell"><span class="ic">📵</span><h3>Illisible sur mobile</h3><p>60% de vos visiteurs arrivent depuis un téléphone. Un site pensé pour un écran de 2012 les fait partir avant d'avoir lu votre nom.</p></div>
+      <div class="cell"><span class="ic">🔓</span><h3>Pas de HTTPS</h3><p>Le navigateur affiche « site non sécurisé ». Pour un client qui compare trois prestataires, c'est une disqualification immédiate.</p></div>
+      <div class="cell"><span class="ic">🕸️</span><h3>Aucun appel à l'action</h3><p>Pas de bouton « Réserver », pas de numéro cliquable, pas de formulaire. Le visiteur intéressé ne trouve rien à faire, alors il ne fait rien.</p></div>
+      <div class="cell"><span class="ic">📅</span><h3>© 2014 au pied de page</h3><p>Le copyright trahit le dernier rafraîchissement. Un cabinet qui n'a pas touché son site depuis dix ans donne l'impression d'un cabinet qui a fermé.</p></div>
+    </div>
+    <p class="source">Chaque semaine, je scanne les sites des entreprises établies à <b>Genève, Zurich, Luxembourg, Paris et Bruxelles</b>. La majorité cumule au moins deux de ces signaux.</p>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cas">
+  <div class="wrap">
+    <span class="lab">Réalisations</span>
+    <h2>Ce que ça donne<br><em>quand c'est bien fait.</em></h2>
+    <p class="sub">Six livraisons récentes, de la plateforme publique à l'outil interne. Le point commun : des systèmes complexes rendus évidents — la compétence que je réapplique à votre site.</p>
+    <div class="rail">
+      <article class="case">
+        <div class="top"><span class="tag">Plateforme publique</span><div class="metric">EU-wide<small>portée presse &amp; médias</small></div></div>
+        <div class="body">
+          <div class="client">Commission européenne · DG COMM</div>
+          <h3>AV Portal</h3>
+          <p>Refonte UX/UI complète de la plateforme audiovisuelle publique de la Commission, au service des journalistes européens — reconstruite sur le design system eUI.</p>
+          <div class="meta"><span>Recherche</span><span>UI</span><span>Design system</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="top"><span class="tag">Création 0→1</span><div class="metric">0→1<small>produit nouveau</small></div></div>
+        <div class="body">
+          <div class="client">Commission européenne · DG COMM</div>
+          <h3>Mermaid</h3>
+          <p>Outil de planification et collaboration audiovisuelle conçu à partir de zéro, avec les utilisateurs et l'équipe produit : parcours, modales, langage de composants cohérent.</p>
+          <div class="meta"><span>Product design</span><span>0→1</span><span>Workflows</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="top"><span class="tag">Application phare</span><div class="metric">Agora<small>app institutionnelle</small></div></div>
+        <div class="body">
+          <div class="client">Conseil de l'UE</div>
+          <h3>Agora App</h3>
+          <p>UX/UI d'une des applications phares du Conseil : traduire des workflows institutionnels denses en une interface que membres et fonctionnaires parcourent avec confiance.</p>
+          <div class="meta"><span>UX</span><span>UI</span><span>Mobile</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="top"><span class="tag">Design system</span><div class="metric">200+<small>widgets · 2 mois</small></div></div>
+        <div class="body">
+          <div class="client">Infrabel</div>
+          <h3>Bibliothèque &amp; catalogue</h3>
+          <p>Reconstruction d'une bibliothèque de 200+ composants en deux mois, et livraison d'un gestionnaire d'actifs B2B utilisé dans toute l'organisation — orienté mobile et performance.</p>
+          <div class="meta"><span>Design system</span><span>B2B</span><span>200+ widgets</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="top"><span class="tag">Web B2B</span><div class="metric">B2B<small>plateforme marketing</small></div></div>
+        <div class="body">
+          <div class="client">Fluxys</div>
+          <h3>Site &amp; plateforme B2B</h3>
+          <p>Travail web marketing et B2B pour un opérateur d'infrastructure énergétique — clarté et confiance pour une audience technique et régulée.</p>
+          <div class="meta"><span>Site</span><span>Marketing</span><span>Énergie</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="top"><span class="tag">Enterprise</span><div class="metric">BWX<small>UI entreprise</small></div></div>
+        <div class="body">
+          <div class="client">Fujitsu</div>
+          <h3>BWX</h3>
+          <p>Design UI d'un produit enterprise — études d'usabilité, wireframes et prototypes transformés en application fonctionnelle et scalable.</p>
+          <div class="meta"><span>UI</span><span>Prototypage</span><span>Enterprise</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="pitch">Ce niveau de soin n'est pas réservé aux institutions. C'est <em>exactement</em> ce que je réapplique à la page d'accueil de votre entreprise.</div>
+  </div>
+</section>
+
+<!-- OFFRE -->
+<section class="offer" id="offre">
+  <div class="wrap">
+    <span class="lab">L'offre</span>
+    <h2>Trois formules, <em>des prix fixés d'avance.</em></h2>
+    <p class="sub">Pas de devis interminable, pas de « ça dépend ». Vous savez ce que vous payez avant le premier appel.</p>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Refresh</h3>
+        <p class="for">Votre page d'accueil, remise au niveau de votre réputation.</p>
+        <div class="price">990 €<small>livré en 5 jours</small></div>
+        <ul>
+          <li>Refonte visuelle complète de la page d'accueil</li>
+          <li>Structure orientée conversion (un seul message, un seul bouton)</li>
+          <li>Responsive impeccable sur mobile — enfin</li>
+          <li>HTTPS, vitesse, SEO technique de base</li>
+          <li>Publié sur Vercel, rapide partout</li>
+        </ul>
+        <a class="btn dark" href="#contact">Commencer</a>
+      </div>
+      <div class="tier star">
+        <span class="badge">Recommandé</span>
+        <h3>Site complet</h3>
+        <p class="for">Tout votre site repensé — 4 à 6 pages qui vendent.</p>
+        <div class="price">2 900 €<small>livré en 2–3 semaines</small></div>
+        <ul>
+          <li>Tout le niveau Refresh, sur 4–6 pages</li>
+          <li>Textes réécrits orientés conversion</li>
+          <li>Prise de rendez-vous intégrée (Cal.com)</li>
+          <li>Analytics configuré — vous voyez ce qui marche</li>
+          <li>SEO de base sur chaque page</li>
+        </ul>
+        <a class="btn dark" href="#contact">Commencer</a>
+      </div>
+      <div class="tier">
+        <h3>Growth</h3>
+        <p class="for">Le site complet, plus un partenaire design pour 3 mois.</p>
+        <div class="price">5 900 €<small>livré en 1 mois + 3 mois de suivi</small></div>
+        <ul>
+          <li>Tout le niveau Site complet</li>
+          <li>Audit accessibilité (EAA — obligation UE depuis 2025)</li>
+          <li>Modifications raisonnables illimitées pendant 3 mois</li>
+          <li>Rapport mensuel : trafic, conversion, actions</li>
+          <li>Capture d'emails + séquence de relance installée</li>
+        </ul>
+        <a class="btn dark" href="#contact">Commencer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="lab">La méthode</span>
+    <h2>De la maquette au site livré, <em>en quinze minutes de votre temps.</em></h2>
+    <div class="steps">
+      <div class="step"><div class="sn">01</div><h3>Le diagnostic</h3><p>Vous m'envoyez votre URL. Je vous renvoie une observation factuelle de votre site actuel — les trois points qui coûtent le plus de clients.</p></div>
+      <div class="step"><div class="sn">02</div><h3>La maquette gratuite</h3><p>Sous 48h, une maquette de votre future page d'accueil, en ligne sur un lien privé. Vous regardez, vous décidez. Elle reste à vous dans tous les cas.</p></div>
+      <div class="step"><div class="sn">03</div><h3>La validation</h3><p>Un appel de 20 minutes pour cadrer : quelles pages, quels messages, quels rendez-vous à prendre. Les prix sont déjà fixés — il n'y a rien à négocier.</p></div>
+      <div class="step"><div class="sn">04</div><h3>La livraison</h3><p>Le site part en production sur Vercel. Rapide, sécurisé, modifiable. Je vous transfère tout — vous êtes propriétaire.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="lab">Questions directes</span>
+    <h2>Ce qu'on me demande <em>avant de dire oui.</em></h2>
+    <details>
+      <summary>Pourquoi si peu cher comparé à une agence ?</summary>
+      <p>Une agence de Genève facture entre 5 000 et 15 000 € pour un site équivalent — justifié par ses locaux, ses commerciaux et ses chefs de projet. Ici, vous parlez directement au designer qui fait le travail. Pas d'intermédiaire, pas de frais généraux à payer.</p>
+    </details>
+    <details>
+      <summary>La maquette est vraiment gratuite ?</summary>
+      <p>Oui. Je fais la maquette avant tout paiement, vous la regardez en ligne, et si vous n'en voulez pas vous ne devez rien — elle reste un cadeau. C'est ma façon de travailler : je préfère montrer qu'argumenter.</p>
+    </details>
+    <details>
+      <summary>Qui écrit les textes ?</summary>
+      <p>Dans la formule Site complet et Growth, je réécris les textes avec vous — orientés conversion, pas de blabla corporate. Dans la formule Refresh, on garde vos textes existants, remis en forme.</p>
+    </details>
+    <details>
+      <summary>Et après la livraison ?</summary>
+      <p>La formule Growth inclut trois mois de suivi. Sinon, une maintenance légère est possible sur abonnement (à partir de 150 €/mois). Le site vous appartient : hébergement, domaine, contenus — tout est à vous.</p>
+    </details>
+    <details>
+      <summary>Vous travaillez avec qui, exactement ?</summary>
+      <p>Des entreprises établies qui font du chiffre mais dont le site a pris dix ans de retard : cabinets, cliniques, instituts, galeries, hôtels, restaurants, architectes — à Genève, Luxembourg, Bruxelles, Paris. Si votre site me fait honte pour vous, on devrait parler.</p>
+    </details>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final" id="contact">
+  <div class="wrap">
+    <div class="inner">
+      <span class="lab">Sans engagement</span>
+      <h2>Votre site mérite<br><em>le même niveau que vos clients.</em></h2>
+      <p>Laissez votre URL et votre email. Vous recevrez sous 48h une maquette gratuite de votre future page d'accueil — et l'observation factuelle des trois points qui coûtent le plus de clients aujourd'hui.</p>
+      <form class="mail" onsubmit="captureLead(event)">
+        <input type="text" id="site-input" placeholder="votresite.be" required>
+        <input type="email" id="email-input" placeholder="votre@email.com" required>
+        <button type="submit" class="btn btn-gold">Envoyer</button>
+      </form>
+      <div class="ok" id="lead-ok">✦ Reçu. La maquette arrive sous 48h — je vous écris à cette adresse.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Cairn Studio — design UX/UI senior · Bruxelles / Genève / Luxembourg</span>
+    <span><a href="mailto:hello@cairn.studio">hello@cairn.studio</a> · © 2026</span>
+  </div>
+</footer>
+
+<script>
+function captureLead(e){
+  e.preventDefault();
+  var site = document.getElementById('site-input').value;
+  var email = document.getElementById('email-input').value;
+  var leads = JSON.parse(localStorage.getItem('cairn_business_leads') || '[]');
+  leads.push({site: site, email: email, date: new Date().toISOString()});
+  localStorage.setItem('cairn_business_leads', JSON.stringify(leads));
+  document.getElementById('lead-ok').classList.add('show');
+  document.getElementById('site-input').value = '';
+  document.getElementById('email-input').value = '';
+}
+</script>
+
+</body>
+</html>
