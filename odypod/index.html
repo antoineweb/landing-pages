@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odypod — Your library, the iPod way</title>
+<meta name="description" content="Odypod plays your own music, audiobooks, videos and images from an iCloud Drive folder — with the classic iPod wheel, haptic clicks and zero accounts. Your files, your player.">
+<meta name="theme-color" content="#0A0A0A">
+<style>
+:root{--bg:#0A0A0A;--fg:#F2F2F2;--dim:#8C8C8C;--line:#2A2A2A;--chrome:#B9BDC6;--blue:#2E6FDB;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--mono);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;background:rgba(10,10,10,.94);border-bottom:2px solid var(--line);backdrop-filter:blur(8px)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav .links{display:flex;gap:22px;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+nav .links a{text-decoration:none;color:var(--dim)}
+nav .links a:hover{color:var(--chrome)}
+.hero{padding:88px 0 72px;border-bottom:2px solid var(--line)}
+.label{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--dim)}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;margin:18px 0 22px}
+h1 b{color:var(--chrome);font-weight:400}
+.lead{color:#CFCFCF;font-size:18px;max-width:36em;margin-bottom:14px}
+.lead strong{color:var(--fg)}
+.ticks{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.ticks span::before{content:"■ ";color:var(--chrome)}
+section{padding:72px 0;border-bottom:2px solid var(--line)}
+h2{font-size:clamp(24px,3.6vw,40px);text-transform:uppercase;margin:12px 0 20px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;margin-top:34px}
+.feat .card{border:2px solid var(--line);padding:24px}
+.feat .card h3{font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--chrome)}
+.feat .card p{color:#BDBDBD;font-size:14px}
+footer{padding:40px 0;color:var(--dim);font-size:13px}
+footer a{color:var(--chrome)}
+.pod{display:flex;justify-content:center;margin:40px 0 8px}
+.pod .body{width:270px;border:3px solid var(--chrome);border-radius:22px;padding:18px 16px;background:#101014}
+.pod .screen{background:linear-gradient(180deg,#CFE1FF 0%,#A9C4F2 100%);border:3px solid #7d848f;border-radius:8px;padding:12px 10px;color:#0B2A5B;min-height:170px}
+.pod .titlebar{display:flex;justify-content:space-between;font-size:10px;font-weight:700;margin-bottom:8px}
+.pod .menu{list-style:none;font-size:13px;font-weight:700}
+.pod .menu li{padding:3px 6px;display:flex;justify-content:space-between}
+.pod .menu li.sel{background:linear-gradient(180deg,#3B78E3,#204194);color:#fff;border-radius:3px}
+.pod .wheel{margin:18px auto 0;width:168px;height:168px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#D5D8DE 0%,#A9ADB6 60%,#8E929B 100%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 3px #76797f,0 6px 18px rgba(0,0,0,.5)}
+.pod .wheel .center{width:64px;height:64px;border-radius:50%;background:#c7cad1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#4a4d54;box-shadow:inset 0 0 0 2px #9a9ea6}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><span style="font-weight:700;letter-spacing:.22em">ODYPOD</span><div class="links"><a href="#features">Features</a><a href="privacy.html">Privacy</a><a href="privacy.html#support">Support</a></div></div></nav>
+
+<div class="hero"><div class="wrap">
+<span class="label">iOS · PRIVATE · OFFLINE-FIRST</span>
+<h1>Your library.<br><b>The iPod way.</b></h1>
+<p class="lead">Odypod plays <strong>your own music, audiobooks, videos and images</strong> straight from an iCloud Drive folder. No accounts. No servers. No platform deciding what you own. Just the most iconic music interface ever made — rebuilt for your iPhone.</p>
+<div class="ticks"><span>Click-wheel, reborn</span><span>Haptic ticks</span><span>Folder navigation</span><span>Works offline</span></div>
+</div></div>
+
+<div class="wrap"><div class="pod"><div class="body">
+<div class="screen">
+<div class="titlebar"><span>Odypod</span><span>▮▮▮</span></div>
+<ul class="menu">
+<li class="sel"><span>Music</span><span>›</span></li>
+<li><span>Audiobooks</span><span>›</span></li>
+<li><span>Videos</span><span>›</span></li>
+<li><span>Images</span><span>›</span></li>
+<li><span>Now Playing</span><span>›</span></li>
+</ul>
+</div>
+<div class="wheel"><div class="center">SELECT</div></div>
+</div></div></div>
+
+<section id="features"><div class="wrap">
+<span class="label">WHY IT'S DIFFERENT</span>
+<h2>Own your library again</h2>
+<div class="feat">
+<div class="card"><h3>The wheel</h3><p>Glide your finger in an arc to scroll, tap the center to select, the rim to go back. Every notch is a haptic click. The muscle memory is 20 years old — your thumbs already know it.</p></div>
+<div class="card"><h3>Folders, not databases</h3><p>Your iCloud Drive folder is the source of truth: Music, Audiobooks, Videos, Images. Sort with 001_ prefixes, the app plays them in order. What you see in Files is what you hear in Odypod.</p></div>
+<div class="card"><h3>Zero friction</h3><p>No sign-in, no uploads, no algorithm. The app never talks to a server that isn't Apple's iCloud. Position is remembered per file. Nothing to configure.</p></div>
+</div>
+</div></section>
+
+<footer><div class="wrap">© 2026 Antoine Schuppisser · <a href="privacy.html">Privacy</a> · <a href="privacy.html#support">Support</a></div></footer>
+</body>
+</html>
