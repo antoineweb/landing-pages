@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Odypod — Your library, the iPod way</title>
-<meta name="description" content="Odypod plays your own music, audiobooks, videos and images from an iCloud Drive folder — with the classic iPod wheel, haptic clicks and zero accounts. Your files, your player.">
+<title>Odypod — Your music on a scroll wheel</title>
+<meta name="description" content="Odypod plays the music and audiobooks you own — from your Music library, On My iPhone or an iCloud Drive folder — with a scroll wheel, haptic ticks and zero accounts.">
 <meta name="theme-color" content="#0A0A0A">
 <style>
-:root{--bg:#0A0A0A;--fg:#F2F2F2;--dim:#8C8C8C;--line:#2A2A2A;--chrome:#B9BDC6;--blue:#2E6FDB;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
+:root{--bg:#0A0A0A;--fg:#F2F2F2;--dim:#8C8C8C;--line:#2A2A2A;--chrome:#B9BDC6;--amber:#F0902A;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--mono);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -34,14 +34,15 @@ h2{font-size:clamp(24px,3.6vw,40px);text-transform:uppercase;margin:12px 0 20px}
 footer{padding:40px 0;color:var(--dim);font-size:13px}
 footer a{color:var(--chrome)}
 .pod{display:flex;justify-content:center;margin:40px 0 8px}
-.pod .body{width:270px;border:3px solid var(--chrome);border-radius:22px;padding:18px 16px;background:#101014}
-.pod .screen{background:linear-gradient(180deg,#CFE1FF 0%,#A9C4F2 100%);border:3px solid #7d848f;border-radius:8px;padding:12px 10px;color:#0B2A5B;min-height:170px}
+.pod .body{width:270px;border:2px solid #2a2a2a;border-radius:22px;padding:18px 16px;background:linear-gradient(180deg,#2b2b2b,#0d0d0d)}
+.pod .screen{background:#262626;border:3px solid #050505;border-radius:8px;padding:12px 10px;color:#F2F2F2;min-height:170px}
 .pod .titlebar{display:flex;justify-content:space-between;font-size:10px;font-weight:700;margin-bottom:8px}
 .pod .menu{list-style:none;font-size:13px;font-weight:700}
 .pod .menu li{padding:3px 6px;display:flex;justify-content:space-between}
-.pod .menu li.sel{background:linear-gradient(180deg,#3B78E3,#204194);color:#fff;border-radius:3px}
-.pod .wheel{margin:18px auto 0;width:168px;height:168px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#D5D8DE 0%,#A9ADB6 60%,#8E929B 100%);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 3px #76797f,0 6px 18px rgba(0,0,0,.5)}
-.pod .wheel .center{width:64px;height:64px;border-radius:50%;background:#c7cad1;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.1em;color:#4a4d54;box-shadow:inset 0 0 0 2px #9a9ea6}
+.pod .menu li.sel{background:linear-gradient(180deg,#FFB54D,#E06E10);color:#fff;border-radius:3px}
+.pod .wheel{position:relative;margin:18px auto 0;width:168px;height:168px;border-radius:50%;background:linear-gradient(180deg,#3d3d3d,#232323);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 6px 18px rgba(0,0,0,.6)}
+.pod .wheel .back{position:absolute;top:14px;left:0;right:0;text-align:center;font-size:10px;font-weight:700;letter-spacing:.12em;color:#c7c7c7}
+.pod .wheel .center{width:64px;height:64px;border-radius:50%;background:linear-gradient(180deg,#444,#262626);box-shadow:inset 0 0 0 1px rgba(0,0,0,.6)}
 </style>
 </head>
 <body>
@@ -49,32 +50,32 @@ footer a{color:var(--chrome)}
 
 <div class="hero"><div class="wrap">
 <span class="label">iOS · PRIVATE · OFFLINE-FIRST</span>
-<h1>Your library.<br><b>The iPod way.</b></h1>
-<p class="lead">Odypod plays <strong>your own music, audiobooks, videos and images</strong> straight from an iCloud Drive folder. No accounts. No servers. No platform deciding what you own. Just the most iconic music interface ever made — rebuilt for your iPhone.</p>
-<div class="ticks"><span>Click-wheel, reborn</span><span>Haptic ticks</span><span>Folder navigation</span><span>Works offline</span></div>
+<h1>Your music.<br><b>On a scroll wheel.</b></h1>
+<p class="lead">Odypod plays <strong>the music and audiobooks you own</strong> — from your Music library, On My iPhone or an iCloud Drive folder. No accounts. No servers. No platform deciding what you own. Just a wheel to spin, a notch you feel, and your covers.</p>
+<div class="ticks"><span>Scroll wheel</span><span>Haptic ticks</span><span>Folder navigation</span><span>Works offline</span></div>
 </div></div>
 
 <div class="wrap"><div class="pod"><div class="body">
 <div class="screen">
 <div class="titlebar"><span>Odypod</span><span>▮▮▮</span></div>
 <ul class="menu">
-<li class="sel"><span>Music</span><span>›</span></li>
+<li class="sel"><span>Albums</span><span>›</span></li>
+<li><span>Artists</span><span>›</span></li>
+<li><span>Songs</span><span>›</span></li>
 <li><span>Audiobooks</span><span>›</span></li>
-<li><span>Videos</span><span>›</span></li>
-<li><span>Images</span><span>›</span></li>
 <li><span>Now Playing</span><span>›</span></li>
 </ul>
 </div>
-<div class="wheel"><div class="center">SELECT</div></div>
+<div class="wheel"><span class="back">BACK</span><div class="center"></div></div>
 </div></div></div>
 
 <section id="features"><div class="wrap">
 <span class="label">WHY IT'S DIFFERENT</span>
 <h2>Own your library again</h2>
 <div class="feat">
-<div class="card"><h3>The wheel</h3><p>Glide your finger in an arc to scroll, tap the center to select, the rim to go back. Every notch is a haptic click. The muscle memory is 20 years old — your thumbs already know it.</p></div>
-<div class="card"><h3>Folders, not databases</h3><p>Your iCloud Drive folder is the source of truth: Music, Audiobooks, Videos, Images. Sort with 001_ prefixes, the app plays them in order. What you see in Files is what you hear in Odypod.</p></div>
-<div class="card"><h3>Zero friction</h3><p>No sign-in, no uploads, no algorithm. The app never talks to a server that isn't Apple's iCloud. Position is remembered per file. Nothing to configure.</p></div>
+<div class="card"><h3>The wheel</h3><p>Glide your finger in an arc to scroll, press the center to select, BACK to go up a level. Every notch is a haptic tick, with an optional click sound. On Now Playing, the wheel sets the volume.</p></div>
+<div class="card"><h3>Folders, not databases</h3><p>Play your Music library, or your own folders: On My iPhone or iCloud Drive, with Music and Audiobooks inside. Sort with 001_ prefixes, the app plays them in order. What you see in Files is what you hear in Odypod.</p></div>
+<div class="card"><h3>Zero friction</h3><p>No sign-in, no uploads, no algorithm. The app has no servers of its own. Your position is remembered for every file. Nothing to configure.</p></div>
 </div>
 </div></section>
 
