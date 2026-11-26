@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unimail — Privacy Policy & Support</title>
+<title>Every inbox — Privacy Policy & Support</title>
 <meta name="theme-color" content="#0A0A0A">
 <style>
 :root{--bg:#0A0A0A;--fg:#F2F2F2;--dim:#8C8C8C;--line:#2A2A2A;--gold:#FFD700;--mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace}
@@ -30,36 +30,52 @@ ul{padding-left:22px}
 <div class="wrap">
 <span class="label">PRIVACY POLICY</span>
 <h1>Your email. Your device.</h1>
-<p class="updated">Last updated: November 16, 2026</p>
+<p class="updated">Last updated: November 27, 2026 · Applies to the app "Every inbox" (formerly Unimail) for iPhone, iPad and Mac.</p>
 
 <h2>Short version</h2>
-<div class="box"><p><strong>Unimail is a client for your own email accounts. It talks directly to your mail servers (Gmail, iCloud, IMAP) — there is no Unimail server, no Unimail account, and no Unimail analytics. Your credentials and mail data never touch anything but your mail provider.</strong></p></div>
+<div class="box"><p><strong>Every inbox is a client for your own email accounts. Your mail goes directly between your device and your mail provider (Gmail, iCloud, IMAP). There is no Every inbox account, no analytics, no ads and no tracking. Two optional features send limited data elsewhere, explained below: AI sorting (only if you allow it) and company logos (can be turned off).</strong></p></div>
 
 <h2>How it works</h2>
-<p>Unimail connects to the email accounts you add, using the standard IMAP and SMTP protocols and your provider's official authentication. Mail is fetched to your device, displayed, and sent through your provider's SMTP server. Nothing in between.</p>
+<p>Every inbox connects to the email accounts you add using the standard IMAP and SMTP protocols, or Google's Gmail API if you sign in with Google. Mail is fetched to your device, displayed there, and sent through your provider. Your passwords and sign-in tokens are stored in your device's Keychain and are only ever sent to your mail provider.</p>
+
+<h2>AI sorting (optional, asked first)</h2>
+<p>To decide which emails are important, Every inbox first uses your own rules on your device: your VIP list (whitelist), muted senders, starred mail and Gmail's Promotions / Social categories. Those emails are never sent anywhere.</p>
+<p>For the other emails, and <strong>only after you tap "Allow AI sorting"</strong>, the app sends, over an encrypted connection: the sender's name and address, the subject, Gmail labels and the first 300 characters of the email. Depending on the engine you choose in Settings › AI filter:</p>
+<ul>
+<li><strong>Unimail AI (default):</strong> the data goes to our relay, hosted on Supabase, which forwards it to Ollama Cloud, an AI provider, and returns only "important / not important" and a short reason. The relay does not store email content. To prevent abuse it counts requests per random install identifier and per IP address; these counters are deleted after about two days.</li>
+<li><strong>Claude (your own key):</strong> the data goes directly to Anthropic under your own agreement with Anthropic.</li>
+<li><strong>On-device:</strong> nothing leaves your device.</li>
+</ul>
+<p>If you say no, or turn it off later in Settings › AI filter, nothing is sent and local rules sort your mail. The AI never receives attachments, full message bodies, your passwords or your contacts list.</p>
+
+<h2>Whitelist suggestions</h2>
+<p>When you ask the app to suggest your important senders, it reads your Sent and starred mail on your device. If AI sorting is allowed, it may also send the candidate addresses, how often you exchanged emails with them and up to three subjects per sender, so the AI can pick and categorise them. Nothing is sent if AI sorting is off.</p>
+
+<h2>Company logos (optional)</h2>
+<p>To show a company's logo next to its emails, the app requests the logo of the sender's web domain (for example "example.com", never the full address) from Google's public favicon service. Personal domains such as gmail.com or icloud.com are never looked up. You can turn this off in Settings › Show company logos.</p>
 
 <h2>What we collect</h2>
-<p><strong>Nothing.</strong> The developer operates no servers, keeps no logs of your usage, and embeds no analytics, advertising or tracking SDKs. Account credentials are stored in your device's Keychain, encrypted by macOS. The developer cannot see, access, or receive any of your email.</p>
+<p>No account, no analytics, no advertising, no tracking SDKs, and no sale or sharing of data for advertising. The developer cannot read your mailbox. Apart from the AI sorting and logos described above, no data leaves your device except to your mail provider.</p>
+
+<h2>Sample inbox</h2>
+<p>The "Explore a sample inbox" mode shows made-up emails only. It connects to nothing and sends nothing.</p>
 
 <h2>Your mail providers</h2>
-<p>Gmail, iCloud and other providers each process your email under their own privacy policies. Unimail requests only the access needed to read and send mail on your behalf.</p>
-
-<h2>Keychain</h2>
-<p>Account credentials are stored in the macOS Keychain, protected by your login password. They are never exported or transmitted anywhere except to your mail provider for authentication.</p>
+<p>Gmail, iCloud and other providers process your email under their own privacy policies. Every inbox requests only the access needed to read, organise and send mail on your behalf.</p>
 
 <h2>Children</h2>
-<p>Unimail is not directed at children under 13, and because it collects no data, no data of children is collected either.</p>
+<p>Every inbox is not directed at children under 13.</p>
 
 <h2>Changes</h2>
-<p>If this policy ever changes materially, the updated version will be posted on this page with a new date.</p>
+<p>If this policy changes materially, the updated version will be posted on this page with a new date.</p>
 
 <h2 id="support">Support</h2>
 <div class="box">
-<p><strong>Email:</strong> <a href="mailto:antoineweb@gmail.com">antoineweb@gmail.com</a><br>
+<p><strong>Email:</strong> <a href="mailto:artusbe@gmail.com">artusbe@gmail.com</a><br>
 <strong>Developer:</strong> Antoine Schuppisser<br>
 <strong>Response time:</strong> usually within 48 hours.</p>
 </div>
-<p style="margin-top:24px">For anything else — feedback, new skin ideas, bug reports — email is the way.</p>
+<p style="margin-top:24px">For anything else (feedback, ideas, bug reports), email is the way.</p>
 </div>
 </body>
 </html>
